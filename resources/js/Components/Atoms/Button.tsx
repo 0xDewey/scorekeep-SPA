@@ -1,13 +1,22 @@
+import { Children, Component, FormEventHandler } from "react";
+
 interface ButtonProps {
-    text: string
-    type : "button" | "submit" | "reset" | undefined
+    children: React.ReactNode;
+    type?: "button" | "submit" | "reset" | undefined;
+    className: string;
+    onClick?: (() => void) | FormEventHandler;
+    disabled?: boolean;
 }
 
-export const Button = (props :ButtonProps) => {
-    const className :string = props.type === "submit" ? "valid" : "error"
-
-
+export const Button = (props: ButtonProps) => {
     return (
-        <button className={className} type={props.type}>{props.text}</button>
+        <button
+            className={props.className}
+            type={props.type}
+            onClick={props?.onClick}
+            disabled={props.disabled}
+        >
+            {props.children}
+        </button>
     );
 };

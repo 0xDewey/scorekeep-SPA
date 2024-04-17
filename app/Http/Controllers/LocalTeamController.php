@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\LocalTeamResource;
+use Inertia\Inertia;
 use App\Models\LocalTeam;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use App\Http\Resources\LocalTeamResource;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LocalTeamController extends Controller
 {
@@ -14,7 +15,9 @@ class LocalTeamController extends Controller
      */
     public function index()
     {
-        return LocalTeamResource::collection(LocalTeam::all());
+        return Inertia::render('Teams', [
+            'teams' => LocalTeam::all()
+        ]);
     }
 
     /**
@@ -31,8 +34,7 @@ class LocalTeamController extends Controller
             'name' => 'required|string',
         ]);
 
-        try
-        {
+        try {
             $localTeam = new LocalTeam();
             $localTeam->name = $validatedData['name'];
 
@@ -40,30 +42,8 @@ class LocalTeamController extends Controller
 
             // Réponse de succès
             return response()->json(['message' => 'Equipe locale créée avec succès'], 201);
-        }
-        catch (\Throwable $e)
-        {
+        } catch (\Throwable $e) {
             return response()->json(['message' => 'Erreur lors de l\'enregistrement de l\'équipe locale'], 404);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  string  $localTeamId
-     *
-     */
-    public function show(string $localTeamId)
-    {
-        try {
-            $localTeam = LocalTeam::findOrFail($localTeamId);
-
-            return response()->json(new LocalTeamResource($localTeam));
-        } catch (ModelNotFoundException $e) {
-            return response()->json([
-                'message' => 'Equipe visiteur non trouvée',
-                'exception' => $e->getMessage()
-            ], 404);
         }
     }
 

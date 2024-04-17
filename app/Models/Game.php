@@ -43,31 +43,86 @@ class Game extends BaseModel
      */
     public function localTeam(): BelongsTo
     {
-        return $this->belongsTo(Timekeeper::class);
+        return $this->belongsTo(LocalTeam::class);
+    }
+
+    public function volunteers()
+    {
+        return $this->hasMany(Volunteer::class, 'gameId', 'uuid');
     }
 
     /**
      * Get the scorekeeper associated with the game.
      */
-    public function timekeeper(): HasOne
+    public function timekeepers()
     {
-        return $this->hasOne(Timekeeper::class);
+        return $this->volunteers()->where('volunteerTypeId', 2);
     }
 
     /**
      * Get the secretary associated with the game.
      */
-    public function secretary(): HasOne
+    public function secretaries()
     {
-        return $this->hasOne(Secretary::class);
+        return $this->volunteers()->where('volunteerTypeId', 1);
     }
 
     /**
      * Get the roomManager associated with the game.
      */
+    public function roomManagers()
+    {
+        return $this->volunteers()->where(
+            'volunteerTypeId',
+            3
+        );
+    }
+
+    /**
+     * Get the roomManager associated with the game.
+     */
+    public function drinkManagers()
+    {
+        return $this->volunteers()->where(
+            'volunteerTypeId',
+            4
+        );
+    }
+
+    public function timekeeper(): HasOne
+    {
+        return $this->hasOne(
+            Volunteer::class,
+            'uuid',
+            'gameId'
+        )->where('volunteerTypeId', 2);
+    }
+
     public function roomManager(): HasOne
     {
-        return $this->hasOne(RoomManager::class);
+        return $this->hasOne(
+            Volunteer::class,
+            'uuid',
+            'gameId'
+        )->where('volunteerTypeId', 3);
+    }
+
+    public function secretary(): HasOne
+    {
+        return $this->hasOne(
+            Volunteer::class,
+            'uuid',
+            'gameId'
+        )->where('volunteerTypeId', 1);
+    }
+
+    public function drinkManager(): HasOne
+    {
+        return $this->hasOne(
+            Volunteer::class,
+            'uuid',
+            'gameId'
+        )->where('volunteerTypeId', 4);
     }
 
     /**
@@ -75,7 +130,6 @@ class Game extends BaseModel
      */
     public function visitorTeam(): HasOne
     {
-        return $this->hasOne(VisitorTeam::class);
+        return $this->hasOne(VisitorTeam::class, 'uuid', 'visitorTeamId');
     }
-
 }

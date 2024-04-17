@@ -1,4 +1,3 @@
-import "../../scss/Components/Atoms/Input.scss"
 import {ChangeEventHandler, useState} from "react";
 
 interface InputProps {

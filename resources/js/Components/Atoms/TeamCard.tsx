@@ -1,5 +1,4 @@
-import "../../scss/Components/Atoms/TeamCard.scss"
-import Link from "next/link";
+import {Link} from "@inertiajs/react";
 
 interface TeamCardProps {
     teamName: string,

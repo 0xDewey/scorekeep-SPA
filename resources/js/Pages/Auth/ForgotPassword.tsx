@@ -1,51 +1,59 @@
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, useForm } from '@inertiajs/react';
-import { FormEventHandler } from 'react';
+import InputError from "@/Components/InputError";
+import { Head, useForm } from "@inertiajs/react";
+import { FormEventHandler } from "react";
+import Layout from "@/Layouts/Layout";
+import { PageProps } from "@/types";
+import { Button } from "@/Components/Atoms/Button";
+import { Input } from "@/Components/Atoms/Input";
+import { Transition } from "@headlessui/react";
 
-export default function ForgotPassword({ status }: { status?: string }) {
-    const { data, setData, post, processing, errors } = useForm({
-        email: '',
-    });
+export default function ForgotPassword({ auth }: PageProps<{}>) {
+    const { data, setData, post, processing, errors, recentlySuccessful } =
+        useForm({
+            email: "",
+        });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('password.email'));
+        post(route("password.email"));
     };
 
     return (
-        <GuestLayout>
-            <Head title="Forgot Password" />
+        <Layout user={auth.user}>
+            <Head title="Mot de passe oublié" />
 
-            <div className="mb-4 text-sm text-gray-600">
-                Forgot your password? No problem. Just let us know your email address and we will email you a password
-                reset link that will allow you to choose a new one.
+            <div className={"reset-password-form"}>
+                <form onSubmit={submit}>
+                    <h3>Réinitialisation du mot de passe</h3>
+
+                    <Transition
+                        show={recentlySuccessful}
+                        enter="leave"
+                        enterFrom="leave-to"
+                        leave="leave"
+                        leaveTo="leave-to"
+                    >
+                        <p className="">
+                            Un lien vous a été envoyé par e-mail.
+                        </p>
+                    </Transition>
+                    <Input
+                        type="email"
+                        value={data.email}
+                        onChange={(e) => setData("email", e.target.value)}
+                        field={"email"}
+                    />
+                    <InputError message={errors.email} className="mt-2" />
+                    <Button
+                        className="valid"
+                        type="submit"
+                        disabled={processing}
+                    >
+                        Réinitialiser le mot de passe
+                    </Button>
+                </form>
             </div>
-
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
-
-            <form onSubmit={submit}>
-                <TextInput
-                    id="email"
-                    type="email"
-                    name="email"
-                    value={data.email}
-                    className="mt-1 block w-full"
-                    isFocused={true}
-                    onChange={(e) => setData('email', e.target.value)}
-                />
-
-                <InputError message={errors.email} className="mt-2" />
-
-                <div className="flex items-center justify-end mt-4">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Email Password Reset Link
-                    </PrimaryButton>
-                </div>
-            </form>
-        </GuestLayout>
+        </Layout>
     );
 }

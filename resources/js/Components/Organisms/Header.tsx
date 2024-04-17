@@ -1,9 +1,9 @@
-import '../../scss/Components/Organisms/Header.scss'
 import Navbar from "../Molecules/Navbar";
-import Link from "next/link";
-import {useEffect, useState} from "react";
+import {PropsWithChildren, useEffect, useState} from "react";
+import {Link} from "@inertiajs/react";
+import {User} from "@/types";
 
-export default function Header() {
+export default function Header({ user }: PropsWithChildren<{ user: User}>) {
     const [scrolling, setScrolling] = useState(false);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function Header() {
                 </Link>
             </div>
             <div className={`links ${scrolling ? 'links--scrolling' : ''}`}>
-                <Navbar />
+                <Navbar  user={user}/>
             </div>
         </header>
     )

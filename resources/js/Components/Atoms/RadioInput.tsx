@@ -1,5 +1,4 @@
 import React from "react";
-import "../../scss/Components/Atoms/RadioInput.scss";
 
 interface RadioInputProps {
     id: string,

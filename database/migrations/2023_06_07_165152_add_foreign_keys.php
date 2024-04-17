@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('volunteers', function (Blueprint $table)
-        {
+        Schema::table('volunteers', function (Blueprint $table) {
             $table->uuid('gameId');
-            $table->uuid('volunteerTypeId');
+            $table->unsignedBigInteger('volunteerTypeId');
 
             $table->foreign('gameId')->references('uuid')->on('games');
-            $table->foreign('volunteerTypeId')->references('uuid')->on('volunteer_types');
+            $table->foreign('volunteerTypeId')->references('id')->on('volunteer_types');
         });
 
-        Schema::table('games', function (Blueprint $table)
-        {
+        Schema::table('games', function (Blueprint $table) {
             $table->uuid('visitorTeamId');
             $table->uuid('timekeeperId')->nullable();
             $table->uuid('localTeamId')->nullable();
@@ -37,8 +35,7 @@ return new class extends Migration
             $table->foreign('visitorTeamId')->references('uuid')->on('visitor_teams')->onDelete('cascade');
         });
 
-        Schema::table('users', function (Blueprint $table)
-        {
+        Schema::table('users', function (Blueprint $table) {
             $table->uuid('localTeamId');
             $table->foreign('localTeamId')->references('uuid')->on('local_teams');
         });

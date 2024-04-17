@@ -1,4 +1,3 @@
-import "../../scss/Components/Atoms/Switch.scss"
 
 interface SwitchProps {
     isOn: boolean,

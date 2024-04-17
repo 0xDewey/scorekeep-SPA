@@ -17,6 +17,7 @@ class LocalTeam extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
         'name',
         'logo',
         'token',
@@ -27,8 +28,7 @@ class LocalTeam extends BaseModel
      *
      * @var array<string, string>
      */
-    protected $casts = [
-    ];
+    protected $casts = [];
 
     /**
      * Get the localTeam that owns the games.
@@ -41,7 +41,7 @@ class LocalTeam extends BaseModel
     /**
      * Get the localTeam that owns the users.
      */
-    public function users() : HasMany
+    public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }

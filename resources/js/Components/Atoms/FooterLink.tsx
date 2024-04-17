@@ -1,5 +1,4 @@
-import "../../scss/Components/Atoms/FooterLink.scss"
-import Link from "next/link";
+import {Link} from "@inertiajs/react";
 
 interface FooterLinkProps {
     link: string,

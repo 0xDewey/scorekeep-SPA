@@ -29,34 +29,35 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => 'password',
         ]);
+
         $visitorTeams = VisitorTeam::factory(5)->create();
 
-        Game::factory(2)->create([
+        Game::factory(20)->create([
             'localTeamId' => $localTeam->uuid,
             'visitorTeamId' => $visitorTeams[0]->uuid,
         ]);
 
-        Game::factory(2)->create([
+        Game::factory(20)->create([
             'localTeamId' => $localTeam->uuid,
             'visitorTeamId' => $visitorTeams[1]->uuid,
         ]);
 
-        Game::factory(2)->create([
+        Game::factory(20)->create([
             'localTeamId' => $localTeam->uuid,
             'visitorTeamId' => $visitorTeams[2]->uuid,
         ]);
 
-        Game::factory(2)->create([
+        Game::factory(20)->create([
             'localTeamId' => $localTeam->uuid,
             'visitorTeamId' => $visitorTeams[3]->uuid,
         ]);
 
-        Game::factory(2)->create([
+        Game::factory(20)->create([
             'localTeamId' => $localTeam->uuid,
             'visitorTeamId' => $visitorTeams[4]->uuid,
         ]);
 
-//        Volunteer::factory(15)->create();
+        // Volunteer::factory(15)->create();
 
         VolunteerType::factory()->create(['label' => "Secrétaire"]);
         VolunteerType::factory()->create(['label' => "Chronométreur"]);

@@ -1,0 +1,48 @@
+button {
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 7px;
+    color: $text-color;
+    border-radius: 5px;
+    transition: all $transition-duration;
+    border: solid 1px;
+    &.valid {
+        background: $base-blue;
+        border-color: aliceblue;
+        color: aliceblue;
+        &:hover {
+            color: $text-color;
+            border-color: $base-blue;
+            background: aliceblue;
+        }
+    }
+
+    &.error {
+        background: $button-error-color;
+        &:hover {
+            background: aliceblue;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.danger {
+        background-color: rgb(220 38 38);
+        color: aliceblue;
+        &:hover {
+            color: $text-color;
+            background-color: aliceblue;
+        }
+    }
+
+    &:disabled {
+        opacity: 0.6;
+
+        &:hover {
+            opacity: 0.6;
+            cursor: wait;
+        }
+    }
+}

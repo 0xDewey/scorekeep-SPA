@@ -1,0 +1,11 @@
+.pagination {
+    background-color: aliceblue;
+    &-active {
+        color: aliceblue !important;
+        background-color: $base-blue;
+    }
+    &:hover {
+        color: aliceblue !important;
+        background-color: lighten($color: $base-blue, $amount: 10);
+    }
+}

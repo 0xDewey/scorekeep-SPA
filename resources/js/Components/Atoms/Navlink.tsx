@@ -1,6 +1,5 @@
-import "../../scss/Components/Atoms/Navlink.scss"
 import {useEffect, useState} from "react";
-import Link from "next/link";
+import {Link} from "@inertiajs/react";
 
 interface NavlinkProps {
     innerText: string,
