@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Single page application Scorekeep (récupération d'une partie des repositories API et PWA)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[English Version](/README_EN.md)
 
-## About Laravel
+Cette application à pour but d'aider les associations de sports indoor d'inscrire et de gérer les bénévoles pour les tables de marques.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Dans ce projet, j'ai regroupé l'API ainsi que le front que j'avais dissocier dans ma première version.
+Cela m'a permis de découvrir le fonctionnement d'inertia avec le rendu SSR proposé.
+J'avais par ailleurs, migrer précedemment le code de React vers Next pour la même raison.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prérequis
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Avant de commencer à travailler sur un projet Laravel 11 avec PHP 8.2, assurez-vous d'avoir installé les éléments suivants sur votre système :
 
-## Learning Laravel
+1. **PHP 8.2** : Assurez-vous d'avoir PHP 8.2 installé sur votre système. Vous pouvez le vérifier en exécutant la commande suivante dans votre terminal :
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    ```bash
+    php -v
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    Si PHP 8.2 n'est pas installé, vous pouvez le télécharger depuis le [site officiel PHP](https://www.php.net/downloads.php) ou utiliser un gestionnaire de paquets tel que [Composer](https://getcomposer.org/) pour l'installer.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Composer** : Composer est un gestionnaire de dépendances essentiel pour les projets Laravel. Assurez-vous de l'avoir installé en suivant les instructions sur [getcomposer.org](https://getcomposer.org/download/).
 
-## Laravel Sponsors
+3. **Git** : Git est utilisé pour gérer les versions de votre code. Si ce n'est pas déjà fait, installez Git en suivant les instructions sur [git-scm.com](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Récupération du projet avec Git
 
-### Premium Partners
+Une fois que vous avez vérifié que tous les prérequis sont installés, vous pouvez récupérer le projet en suivant ces étapes :
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. Ouvrez votre terminal et accédez au répertoire où vous souhaitez cloner le dépôt.
 
-## Contributing
+2. Utilisez Composer pour créer un nouveau projet Laravel en exécutant la commande suivante :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    git clone https://github.com/B45T13N/scorekeep-SPA.git nom-du-projet
+    ```
 
-## Code of Conduct
+    Remplacez `nom-du-projet` par le nom que vous souhaitez donner à votre projet.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. Une fois la création du projet terminée, accédez au répertoire du projet en utilisant la commande `cd` :
 
-## Security Vulnerabilities
+    ```bash
+    cd nom-du-projet
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. Récupérer les dépendances avec Composer :
 
-## License
+    ```bash
+    php composer install
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. Lancer les migrations de la base de données :
+
+    ```bash
+    php artisan migrate
+    ```
+
+6. Pour des données de tests vous pouvez modifier les fichiers de factory et utiliser la commande suivante :
+
+    ```bash
+    php artisan db:seed
+    ```
+
+## URL de Base
+
+L'URL de base pour toutes les requêtes API est : `http://localhost:8000/`
+
+## Authentification
+
+Le système d'authentification est géré avec le package laravel-sanctum.
+
+## A venir
+
+Une mise à jour du code de l'API sera effectuée afin de redévelopper une application mobile correspondante.
+
+## Conclusion
+
+Ceci conclut la documentation pour l'API Scorekeep. Vous pouvez maintenant commencer à construire et à intégrer vos applications en utilisant les points d'accès fournis. Si vous avez des questions ou avez besoin d'assistance supplémentaire, n'hésitez pas à contacter notre équipe de support à l'adresse contact@scorekeep.org. Bon développement !
+
+```
+
+```
