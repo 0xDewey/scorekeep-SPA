@@ -137,6 +137,9 @@ export default function DashboardMatchs({
                                                             }
                                                             method="patch"
                                                             as="div"
+                                                            preserveScroll={
+                                                                true
+                                                            }
                                                         >
                                                             <Button
                                                                 type="button"
@@ -159,6 +162,9 @@ export default function DashboardMatchs({
                                                             }
                                                             method="delete"
                                                             as="div"
+                                                            preserveScroll={
+                                                                true
+                                                            }
                                                         >
                                                             <Button
                                                                 type="button"
@@ -182,6 +188,7 @@ export default function DashboardMatchs({
                                                         }
                                                         method="patch"
                                                         as="div"
+                                                        preserveScroll={true}
                                                     >
                                                         <Button
                                                             type="button"
