@@ -5,6 +5,7 @@ import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons/faUserAlt";
 import { faCalendar, faVolleyball } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 interface DashboardLinks {
     innerText: string;
@@ -12,8 +13,8 @@ interface DashboardLinks {
     icon: React.ReactNode;
 }
 
-const Dashboard = ({ auth }: PageProps<{}>) => {
-    const dashboardLinks: Array<DashboardLinks> = [
+const Dashboard = ({ auth, isAdmin }: PageProps<{ isAdmin: boolean }>) => {
+    let dashboardLinks: Array<DashboardLinks> = [
         {
             innerText: "Profil",
             link: "/profile",
@@ -30,6 +31,16 @@ const Dashboard = ({ auth }: PageProps<{}>) => {
             icon: <FontAwesomeIcon icon={faCalendar} />,
         },
     ];
+
+    if (isAdmin) {
+        dashboardLinks = [
+            {
+                innerText: "Gestion des bénévoles",
+                link: "/dashboard/volunteers",
+                icon: <FontAwesomeIcon icon={faCalendar} />,
+            },
+        ];
+    }
 
     return (
         <>

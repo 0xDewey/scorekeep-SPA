@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'localTeamId' => '38233a32-0d5c-48b4-a9d5-6bdb35b63276',
+            'localTeamId' => null,
             'password' => Hash::make("password"), // password
             'remember_token' => Str::random(10),
         ];
