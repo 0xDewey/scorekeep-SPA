@@ -13,17 +13,13 @@ class VolunteerTypeControllerTest extends TestCase
     {
         $volunteerType = VolunteerType::factory()->create();
 
-        $response = $this->
-        withHeaders([
+        $response = $this->withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
-        ])->
-        getJson('/api/volunteer-types/show/'.$volunteerType->uuid);
+        ])->getJson('/api/volunteer-types/show/' . $volunteerType->id);
 
         $response->assertStatus(200)
             ->assertJson([
-                'data' => [
-                    'label' => $volunteerType->label
-                ]
+                'label' => $volunteerType->label
             ]);
     }
 
@@ -32,11 +28,9 @@ class VolunteerTypeControllerTest extends TestCase
         $volunteerType1 = VolunteerType::factory()->create();
         $volunteerType2 = VolunteerType::factory()->create();
 
-        $response = $this->
-        withHeaders([
+        $response = $this->withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
-        ])->
-        getJson('/api/volunteer-types/show-all');
+        ])->getJson('/api/volunteer-types/show-all');
 
         $response->assertStatus(200)
             ->assertJson([
@@ -55,11 +49,9 @@ class VolunteerTypeControllerTest extends TestCase
     {
         $nonExistingVolunteerTypeId = 999;
 
-        $response = $this->
-        withHeaders([
+        $response = $this->withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
-        ])->
-        getJson('/api/volunteer-types/show/'.$nonExistingVolunteerTypeId);
+        ])->getJson('/api/volunteer-types/show/' . $nonExistingVolunteerTypeId);
 
         $response->assertStatus(404)
             ->assertJson(['message' => 'Catégorie de bénévole non trouvée']);
