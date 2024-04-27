@@ -1,13 +1,13 @@
 import { Navlink } from "../Atoms/Navlink";
 import { Logout } from "../Atoms/Logout";
-import { NavlinkObject } from "@/Models/NavlinkObject";
 import { PropsWithChildren } from "react";
 import { User } from "@/types";
 import { usePage } from "@inertiajs/react";
+import { LinkItem } from "@/Models/LinkItem";
 
 export default function Navbar({ user }: PropsWithChildren<{ user: User }>) {
     const { url } = usePage();
-    const navlinks: Array<NavlinkObject> = [
+    const navlinks: Array<LinkItem> = [
         { innerText: "Accueil", link: "/" },
         { innerText: "Les équipes", link: "/teams" },
     ];

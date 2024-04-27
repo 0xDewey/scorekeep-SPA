@@ -2,25 +2,11 @@ import Navbar from "../Molecules/Navbar";
 import {PropsWithChildren, useEffect, useState} from "react";
 import {Link} from "@inertiajs/react";
 import {User} from "@/types";
+import BurgerMenu from "./BurgerMenu";
+import { LinkItem } from "@/Models/LinkItem";
 
-export default function Header({ user }: PropsWithChildren<{ user: User}>) {
-    const [scrolling, setScrolling] = useState(false);
+export default function Header({ user, scrolling }: PropsWithChildren<{ user: User, scrolling: boolean}>) {
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setScrolling(true);
-            } else {
-                setScrolling(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     return (
         <header className={`app-header ${scrolling ? 'app-header--scrolling' : ''}`}>

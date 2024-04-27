@@ -13,37 +13,6 @@ main.content {
     }
 }
 
-.bm-overlay {
-    margin-top: -3px;
-}
-
-.bm-menu {
-    padding: 2rem 1.5rem 0;
-}
-
-.bm-menu-wrap {
-    height: 100%;
-    font-size: 2vw;
-    background: $base-blue;
-    margin-top: -3px;
-    .bm-item-list a {
-        color: aliceblue !important;
-        font-size: 25px;
-        padding: 0.8rem;
-    }
-}
-
-.bm-burger-button {
-    position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 20px;
-    top: 20px;
-}
-.bm-burger-bars {
-    background: $text-color;
-}
-
 @media (min-width: $layout-breakpoint-medium) {
     #slide {
         display: none;
