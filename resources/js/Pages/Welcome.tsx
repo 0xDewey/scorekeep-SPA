@@ -20,7 +20,7 @@ export default function Welcome({ auth }: PageProps<{}>) {
                             matchs.
                         </p>
                         <p>
-                            Il est possible pour les membres du bureaux qui le
+                            Il est possible pour les membres du bureau qui le
                             souhaitent d’avoir un compte afin de pouvoir se
                             connecter sur ce site. Une fois connecté, il vous
                             sera possible d’enregistrer de nouveaux matchs ainsi
@@ -28,16 +28,15 @@ export default function Welcome({ auth }: PageProps<{}>) {
                         </p>
                         <p>
                             L’inscription aux tables de matchs est possible soit
-                            via ce site internet, soit via l’application mobile
-                            du même nom.
+                            via ce site internet.
                         </p>
                         <p>
-                            Une vérification est faite au moment de
+                            Une vérification peut-être ajoutée au moment de
                             l’inscription via l’adresse e-mail de la personne
                             souhaitant s’inscrire, afin de vérifier que cette
-                            dernière disposent d’une licence (élement nécessaire
+                            dernière dispose d’une licence (élement nécessaire
                             pour tenir une table). Cette vérification peut-être
-                            faite via un token transmis par l'association.
+                            faite via un mot de passe transmis par l'association.
                         </p>
                         <p>
                             Au delà de la gestion des tables de marques, cette
