@@ -43,6 +43,8 @@ class DashboardController extends Controller
     {
         $game = Game::find($uuid);
 
+        $this->authorize('view', $game);
+
         return Inertia::render('Dashboard/Matchs/Edit', [
             'match' => new GameResource($game),
         ]);
@@ -59,6 +61,8 @@ class DashboardController extends Controller
 
         $game = Game::find($uuid);
 
+        $this->authorize('view', $game);
+
         $game->address = "$data->address/$data->CPO/$data->city";
         $game->gameDate = $data->date;
         $game->save();
@@ -72,6 +76,8 @@ class DashboardController extends Controller
     {
         $game = Game::find($uuid);
 
+        $this->authorize('view', $game);
+
         $game->isCancelled = true;
         $game->cancelledDate = now();
         $game->save();
@@ -83,6 +89,8 @@ class DashboardController extends Controller
     {
         $game = Game::find($uuid);
 
+        $this->authorize('view', $game);
+
         $game->isCancelled = false;
         $game->cancelledDate = null;
         $game->save();
@@ -93,6 +101,8 @@ class DashboardController extends Controller
     public function matchDelete(Request $request, string $uuid)
     {
         $game = Game::find($uuid);
+
+        $this->authorize('view', $game);
 
         $game->isDeleted = true;
         $game->deletedDate = now();
@@ -170,6 +180,9 @@ class DashboardController extends Controller
         $validatedData = (object) $request->validated();
 
         $game = Game::find($validatedData->matchId);
+
+        $this->authorize('view', $game);
+
         $game->timekeeperId = $validatedData->timekeeperId;
         $game->drinkManagerId = $validatedData->drinkManagerId;
         $game->roomManagerId = $validatedData->roomManagerId;

@@ -6,6 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @property string address
+ * @property string visitorTeamId
+ * @property string timekeeperId
+ * @property string secretaryId
+ * @property string roomManagerId
+ * @property string localTeamId
+ * @property bool isHomeMatch
+ * @property bool isCancelled
+ * @property date cancelledDate
+ * @property bool isDeleted
+ * @property date deletedDate
+ */
+
 class Game extends BaseModel
 {
     use HasFactory;
