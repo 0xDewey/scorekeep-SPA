@@ -8,6 +8,7 @@ use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use App\Exceptions\TokenMismatch;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidateVolunteerRegistrationRequest;
 
 class VolunteerController extends Controller
 {
@@ -34,15 +35,9 @@ class VolunteerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ValidateVolunteerRegistrationRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-//            'email' => 'required|email',
-            'volunteerTypeId' => 'required|string',
-            'gameId' => 'required|string',
-            'token' => 'required|int'
-        ]);
+        $validatedData = $request->validated();
 
         try
         {
