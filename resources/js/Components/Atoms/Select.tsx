@@ -5,6 +5,7 @@ interface SelectProps {
     onChange: ChangeEventHandler<HTMLSelectElement>;
     selectOptions: Array<SelectOptionsProps>;
     value: string;
+    innerText: string;
 }
 
 export default function Select(props: SelectProps) {
@@ -15,7 +16,7 @@ export default function Select(props: SelectProps) {
             id="volunteer-type"
             onChange={props.onChange}
         >
-            <option value="">Sélectionner le type de poste</option>
+            <option value="">{props.innerText}</option>
             {props.selectOptions.map((option: any, key) => (
                 <option key={key} value={option.id}>
                     {option.label}

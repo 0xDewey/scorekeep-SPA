@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SAController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocalTeamController;
@@ -19,6 +20,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/dashboard/matchs/cancel/{uuid}', [DashboardController::class, 'matchCancel'])->name('dashboard.match.cancel');
     Route::patch('/dashboard/matchs/confirm/{uuid}', [DashboardController::class, 'matchConfirm'])->name('dashboard.match.confirm');
     Route::delete('/dashboard/matchs/{uuid}', [DashboardController::class, 'matchDelete'])->name('dashboard.match.delete');
+
     Route::get('/dashboard/volunteers', [DashboardController::class, 'volunteers'])->name('dashboard.volunteers');
     Route::post('/dashboard/volunteers', [DashboardController::class, 'storeVolunteers'])->name('dashboard.volunteers.store');
+
+    Route::get('/dashboard/user/add', [SAController::class, 'addUser'])->name('dashboard.user.add');
+    Route::post('/dashboard/user/add', [SAController::class, 'createUser'])->name('dashboard.user.create');
+
+    Route::get('/dashboard/local_teams/add', [SAController::class, 'addLocalTeam'])->name('dashboard.local_teams.add');
+    Route::post('/dashboard/local_teams/add', [SAController::class, 'createLocalTeam'])->name('dashboard.local_teams.create');
 });

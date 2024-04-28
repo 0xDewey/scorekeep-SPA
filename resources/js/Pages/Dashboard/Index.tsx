@@ -4,7 +4,12 @@ import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons/faUserAlt";
-import { faCalendar, faVolleyball } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCalendar,
+    faUserPlus,
+    faUsers,
+    faVolleyball,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 interface DashboardLinks {
@@ -13,7 +18,7 @@ interface DashboardLinks {
     icon: React.ReactNode;
 }
 
-const Dashboard = ({ auth, isAdmin }: PageProps<{ isAdmin: boolean }>) => {
+const Dashboard = ({ auth, roles }: PageProps<{ roles: Array<string> }>) => {
     let dashboardLinks: Array<DashboardLinks> = [
         {
             innerText: "Profil",
@@ -32,12 +37,22 @@ const Dashboard = ({ auth, isAdmin }: PageProps<{ isAdmin: boolean }>) => {
         },
     ];
 
-    if (isAdmin) {
+    if (roles.includes("SA")) {
         dashboardLinks = [
             {
-                innerText: "Gestion des bénévoles",
-                link: "/dashboard/volunteers",
-                icon: <FontAwesomeIcon icon={faCalendar} />,
+                innerText: "Profil",
+                link: "/profile",
+                icon: <FontAwesomeIcon icon={faUserAlt} />,
+            },
+            {
+                innerText: "Ajouter des utilisateurs",
+                link: "dashboard/user/add",
+                icon: <FontAwesomeIcon icon={faUserPlus} />,
+            },
+            {
+                innerText: "Ajouter des équipes",
+                link: "dashboard/local_teams/add",
+                icon: <FontAwesomeIcon icon={faUsers} />,
             },
         ];
     }

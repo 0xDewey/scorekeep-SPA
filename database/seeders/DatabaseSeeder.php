@@ -47,6 +47,16 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole($role);
 
+        $role = Role::create(['name' => 'SA']);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Test Sudo',
+            'email' => 'sa@example.com',
+            'password' => 'password',
+        ]);
+
+        $user->assignRole($role);
+
         $visitorTeams = VisitorTeam::factory(5)->create();
 
         Game::factory(2)->create([

@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'api.public_key' => \App\Http\Middleware\ApiKeyMiddleware::class,
+            'check_role' => \App\Http\Middleware\CheckRole::class,
         ]);
 
         //

@@ -10,7 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * @method bool isAdmin;
  * 
  */
 
@@ -53,10 +52,5 @@ class User extends Authenticatable
     public function localTeam()
     {
         return $this->hasOne(LocalTeam::class);
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->hasRole('admin');
     }
 }
