@@ -24,7 +24,7 @@ class CreateLocalTeamRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'logo' => 'required|url',
-            'token' => 'required|string'
+            'token' => 'required|string',
         ];
     }
 }

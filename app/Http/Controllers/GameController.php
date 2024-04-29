@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
-use Inertia\Inertia;
-use Illuminate\Http\Request;
-use App\Models\VolunteerType;
 use App\Http\Resources\GameResource;
+use App\Models\Game;
 use App\Models\LocalTeam;
+use App\Models\VolunteerType;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class GameController extends Controller
 {
     public function index(Request $request, string $localTeamId)
     {
-        $startDate =  now();
+        $startDate = now();
         $endDate = now()->addDay(10);
 
         $perPage = $request->input('per_page', 10);
@@ -34,7 +34,7 @@ class GameController extends Controller
         return Inertia::render('Matchs', [
             'matchs' => GameResource::collection($games),
             'localTeamName' => $localTeamName,
-            'volunteerTypes' => $volunteerTypes
+            'volunteerTypes' => $volunteerTypes,
         ]);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\LocalTeam;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LocalTeamResource;
+use App\Models\LocalTeam;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 
 class LocalTeamController extends Controller
 {
@@ -21,7 +21,6 @@ class LocalTeamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  string  $visitorTeamName
      * @param  int  $gameId
      * @return \Illuminate\Http\JsonResponse
@@ -32,8 +31,7 @@ class LocalTeamController extends Controller
             'name' => 'required|string',
         ]);
 
-        try
-        {
+        try {
             $localTeam = new LocalTeam();
             $localTeam->name = $validatedData['name'];
 
@@ -41,18 +39,13 @@ class LocalTeamController extends Controller
 
             // Réponse de succès
             return response()->json(['message' => 'Equipe locale créée avec succès'], 201);
-        }
-        catch (\Throwable $e)
-        {
+        } catch (\Throwable $e) {
             return response()->json(['message' => 'Erreur lors de l\'enregistrement de l\'équipe locale'], 404);
         }
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  string  $localTeamId
-     *
      */
     public function show(string $localTeamId)
     {
@@ -63,7 +56,7 @@ class LocalTeamController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Equipe visiteur non trouvée',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }
@@ -71,7 +64,6 @@ class LocalTeamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $visitorTeamId
      * @return \Illuminate\Http\JsonResponse
      */
@@ -93,7 +85,7 @@ class LocalTeamController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Equipe visiteur non trouvée',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }

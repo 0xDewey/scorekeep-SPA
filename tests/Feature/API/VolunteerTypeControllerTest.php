@@ -4,7 +4,6 @@ namespace Tests\Feature\API;
 
 use App\Models\VolunteerType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class VolunteerTypeControllerTest extends TestCase
@@ -24,8 +23,8 @@ class VolunteerTypeControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertJson([
                 'data' => [
-                    'label' => $volunteerType->label
-                ]
+                    'label' => $volunteerType->label,
+                ],
             ]);
     }
 
@@ -49,7 +48,7 @@ class VolunteerTypeControllerTest extends TestCase
                 [
                     'uuid' => $volunteerType2->uuid,
                     'label' => $volunteerType2->label,
-                ]
+                ],
             ]);
     }
 

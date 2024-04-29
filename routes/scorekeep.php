@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SAController;
-use App\Http\Controllers\GameController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\LocalTeamController;
+use App\Http\Controllers\SAController;
 use App\Http\Controllers\VolunteerController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('matchs/{localTeamId}', [GameController::class, 'index'])->name('games.index');
 Route::post('volunteers/store', [VolunteerController::class, 'store'])->name('volunteers.store');

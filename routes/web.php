@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\User;
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Notifications\SendTemporaryPassword;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -32,5 +31,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-require __DIR__ . '/scorekeep.php';
+require __DIR__.'/auth.php';
+require __DIR__.'/scorekeep.php';

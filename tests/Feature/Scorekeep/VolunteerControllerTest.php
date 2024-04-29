@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Models\Game;
 use App\Models\LocalTeam;
 use App\Models\VisitorTeam;
@@ -19,8 +18,8 @@ class VolunteerControllerTest extends TestCase
         $volunteerTypeId = VolunteerType::factory()->create();
         $localTeam = LocalTeam::factory()->create(['token' => 1234]);
         $game = Game::factory()->create([
-            "visitorTeamId" => $visitorTeam->uuid,
-            "localTeamId" => $localTeam->uuid
+            'visitorTeamId' => $visitorTeam->uuid,
+            'localTeamId' => $localTeam->uuid,
         ]);
 
         $name = 'John Doe';
@@ -34,7 +33,7 @@ class VolunteerControllerTest extends TestCase
             'name' => $name,
             'token' => $token,
             'gameId' => $gameId,
-            'volunteerTypeId' => $volunteerTypeId
+            'volunteerTypeId' => $volunteerTypeId,
         ]);
 
         $response->assertStatus(201)
@@ -42,10 +41,9 @@ class VolunteerControllerTest extends TestCase
 
         $this->assertDatabaseHas('volunteers', [
             'gameId' => $gameId,
-            'volunteerTypeId' => $volunteerTypeId
+            'volunteerTypeId' => $volunteerTypeId,
         ]);
     }
-
 
     public function testStoreWithInvalidData()
     {
@@ -76,7 +74,7 @@ class VolunteerControllerTest extends TestCase
             'name' => $name,
             'token' => $token,
             'gameId' => $gameId,
-            'volunteerTypeId' => $volunteerTypeId
+            'volunteerTypeId' => $volunteerTypeId,
         ]);
 
         $response->assertStatus(404)

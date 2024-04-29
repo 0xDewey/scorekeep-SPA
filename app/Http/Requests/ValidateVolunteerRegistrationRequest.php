@@ -26,7 +26,7 @@ class ValidateVolunteerRegistrationRequest extends FormRequest
             //            'email' => 'required|email',
             'volunteerTypeId' => 'required|int|exists:volunteer_types,id',
             'gameId' => 'required|uuid|exists:games,uuid',
-            'token' => 'required|numeric|exists:local_teams,token'
+            'token' => 'required|numeric|exists:local_teams,token',
         ];
     }
 }

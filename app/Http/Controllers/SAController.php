@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Inertia\Inertia;
-use App\Models\LocalTeam;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\CreateLocalTeamRequest;
-use App\Http\Resources\SelectOptionRoleResource;
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\SelectOptionLocalTeamResource;
+use App\Http\Resources\SelectOptionRoleResource;
+use App\Models\LocalTeam;
+use App\Models\User;
 use App\Notifications\SendTemporaryPassword;
+use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
 
 class SAController extends Controller
 {
@@ -26,8 +26,8 @@ class SAController extends Controller
         $localTeams = LocalTeam::all();
 
         return Inertia::render('Dashboard/Users/Add', [
-            "roles" => SelectOptionRoleResource::collection($roles),
-            "localTeams" => SelectOptionLocalTeamResource::collection($localTeams),
+            'roles' => SelectOptionRoleResource::collection($roles),
+            'localTeams' => SelectOptionLocalTeamResource::collection($localTeams),
         ]);
     }
 
@@ -52,8 +52,8 @@ class SAController extends Controller
         $localTeams = LocalTeam::all();
 
         return Inertia::render('Dashboard/Users/Add', [
-            "roles" => SelectOptionRoleResource::collection($roles),
-            "localTeams" => SelectOptionLocalTeamResource::collection($localTeams),
+            'roles' => SelectOptionRoleResource::collection($roles),
+            'localTeams' => SelectOptionLocalTeamResource::collection($localTeams),
         ]);
     }
 

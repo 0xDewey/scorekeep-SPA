@@ -29,11 +29,10 @@ class AddMatchRequest extends FormRequest
             'category' => 'required|string',
             'visitorTeamName' => 'required|string',
             'isHomeMatch' => 'required|boolean',
-            'gameDate' =>
-            [
+            'gameDate' => [
                 'required',
                 'date',
-                'after:' . Carbon::now('Europe/Paris')->toDateTimeString(),
+                'after:'.Carbon::now('Europe/Paris')->toDateTimeString(),
             ],
         ];
     }

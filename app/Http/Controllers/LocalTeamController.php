@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\LocalTeam;
-use Illuminate\Http\Request;
-use App\Http\Resources\LocalTeamResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class LocalTeamController extends Controller
 {
@@ -16,14 +15,13 @@ class LocalTeamController extends Controller
     public function index()
     {
         return Inertia::render('Teams', [
-            'teams' => LocalTeam::all()
+            'teams' => LocalTeam::all(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  string  $visitorTeamName
      * @param  int  $gameId
      * @return \Illuminate\Http\JsonResponse
@@ -50,7 +48,6 @@ class LocalTeamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $visitorTeamId
      * @return \Illuminate\Http\JsonResponse
      */
@@ -72,7 +69,7 @@ class LocalTeamController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Equipe visiteur non trouvée',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }
