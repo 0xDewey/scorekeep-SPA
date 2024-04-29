@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Models\User;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Notifications\SendTemporaryPassword;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -11,7 +13,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard/Index');
+    $user = User::find(auth()->user()->id);
+
+    $roles = [];
+
+    foreach ($user->roles()->get() as $role) {
+        $roles[] = $role->name;
+    }
+
+    return Inertia::render('Dashboard/Index', [
+        'roles' => $roles,
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

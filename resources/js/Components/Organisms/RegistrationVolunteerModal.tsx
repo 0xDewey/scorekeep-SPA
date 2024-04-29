@@ -71,6 +71,7 @@ export default function RegistrationVolunteerModal(
             </div>
             <form className={"form-submit"} onSubmit={submit}>
                 <Select
+                    innerText="Sélectionnez le poste"
                     value={data.volunteerTypeId}
                     onChange={(e) => setData("volunteerTypeId", e.target.value)}
                     selectOptions={props.volunteerTypes}

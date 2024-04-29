@@ -17,6 +17,17 @@ button {
         }
     }
 
+    &.option {
+        background: #58a02e;
+        border-color: aliceblue;
+        color: aliceblue;
+        &:hover {
+            color: $text-color;
+            border-color: #58a02e;
+            background: aliceblue;
+        }
+    }
+
     &.error {
         background: $button-error-color;
         &:hover {
