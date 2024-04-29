@@ -16,7 +16,7 @@ class SelectOptionLocalTeamResource extends JsonResource
     {
         return [
             'label' => $this->name,
-            'id' => $this->id,
+            'id' => $this->uuid,
         ];
     }
 }

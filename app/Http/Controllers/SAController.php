@@ -11,6 +11,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\CreateLocalTeamRequest;
 use App\Http\Resources\SelectOptionRoleResource;
 use App\Http\Resources\SelectOptionLocalTeamResource;
+use App\Notifications\SendTemporaryPassword;
 
 class SAController extends Controller
 {
@@ -41,6 +42,8 @@ class SAController extends Controller
         ]);
 
         $user->assignRole($role);
+
+        $user->notify(new SendTemporaryPassword($request->password));
 
         return redirect(route('dashboard', absolute: false));
     }

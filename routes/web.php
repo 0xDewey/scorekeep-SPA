@@ -4,8 +4,13 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Notifications\SendTemporaryPassword;
 
 Route::get('/', function () {
+    $user = User::first();
+
+    $user->notify(new SendTemporaryPassword("salut"));
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
     ]);

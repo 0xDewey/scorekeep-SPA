@@ -18,6 +18,7 @@ export default function AddMatch({
     roles: Array<SelectOptionsProps>;
     localTeams: Array<SelectOptionsProps>;
 }>) {
+    console.log(localTeams);
     const {
         data,
         setData,
