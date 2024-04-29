@@ -35,9 +35,12 @@ class SAController extends Controller
     {
         $role = Role::findById($request->role);
 
+        $localTeamId = $request->local_team ?? null;
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'localTeamId' => $localTeamId,
             'password' => Hash::make($request->password),
         ]);
 
@@ -45,7 +48,13 @@ class SAController extends Controller
 
         $user->notify(new SendTemporaryPassword($request->password));
 
-        return redirect(route('dashboard', absolute: false));
+        $roles = Role::all();
+        $localTeams = LocalTeam::all();
+
+        return Inertia::render('Dashboard/Users/Add', [
+            "roles" => SelectOptionRoleResource::collection($roles),
+            "localTeams" => SelectOptionLocalTeamResource::collection($localTeams),
+        ]);
     }
 
     public function addLocalTeam()
