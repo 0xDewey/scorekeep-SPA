@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Game;
-use App\Models\User;
-use Inertia\Inertia;
-use App\Models\VisitorTeam;
-use Illuminate\Http\Request;
-use App\Models\VolunteerType;
-use App\Http\Resources\GameResource;
 use App\Http\Requests\AddMatchRequest;
 use App\Http\Requests\MatchEditRequest;
 use App\Http\Requests\RegistrateVoluteersRequest;
+use App\Http\Resources\GameResource;
+use App\Models\Game;
+use App\Models\User;
+use App\Models\VisitorTeam;
+use App\Models\VolunteerType;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
