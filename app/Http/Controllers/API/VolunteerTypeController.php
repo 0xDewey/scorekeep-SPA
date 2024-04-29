@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
-use App\Models\VolunteerType;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\VolunteerTypeResource;
+use App\Models\VolunteerType;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class VolunteerTypeController extends Controller
@@ -15,18 +14,14 @@ class VolunteerTypeController extends Controller
      */
     public function show(int $volunteerTypeId)
     {
-        try
-        {
+        try {
             return new VolunteerTypeResource(VolunteerType::query()->findOrFail($volunteerTypeId)->first());
-        }
-        catch (ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Catégorie de bénévole non trouvée',
             ], 404);
         }
     }
-
 
     /**
      * Display the specified resource.
@@ -35,6 +30,7 @@ class VolunteerTypeController extends Controller
     {
         try {
             $volunteerTypes = VolunteerType::all();
+
             return response()->json(VolunteerTypeResource::collection($volunteerTypes), 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([

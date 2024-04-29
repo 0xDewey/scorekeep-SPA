@@ -17,7 +17,7 @@ class VolunteerTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'label' => fake("fr_FR")->word(),
+            'label' => fake('fr_FR')->word(),
         ];
     }
 }

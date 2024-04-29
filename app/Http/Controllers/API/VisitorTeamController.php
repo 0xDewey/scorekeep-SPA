@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\VisitorTeam;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\VisitorTeamResource;
+use App\Models\VisitorTeam;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 
 class VisitorTeamController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      */
@@ -29,15 +28,12 @@ class VisitorTeamController extends Controller
      */
     public function show(string $visitorTeamId)
     {
-        try
-        {
+        try {
             return response()->json(new VisitorTeamResource(VisitorTeam::query()->findOrFail($visitorTeamId)->first()));
-        }
-        catch (ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Equipe visiteur non trouvée',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }
@@ -47,8 +43,7 @@ class VisitorTeamController extends Controller
      */
     public function update(Request $request, int $visitorTeamId)
     {
-        try
-        {
+        try {
             $visitorTeam = VisitorTeam::query()->findOrFail($visitorTeamId)->first();
 
             $validatedData = $request->validate([
@@ -61,12 +56,10 @@ class VisitorTeamController extends Controller
 
             // Réponse de succès
             return response()->json(['message' => 'Equipe visiteur mise à jour avec succès'], 200);
-        }
-        catch (ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Equipe visiteur non trouvée',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }

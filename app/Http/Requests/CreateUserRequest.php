@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class CreateUserRequest extends FormRequest
 {
@@ -27,7 +27,7 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'local_team' => 'required_if:role,1|required_if:role,2|nullable|string|exists:local_teams,uuid',
             'role' => 'required|string|exists:roles,id',
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', Password::defaults()],
         ];
     }
@@ -35,7 +35,7 @@ class CreateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'local_team.required_if' => "Si le rôle est utilisateur/admin, l'équipe doit être renseignée."
+            'local_team.required_if' => "Si le rôle est utilisateur/admin, l'équipe doit être renseignée.",
         ];
     }
 }

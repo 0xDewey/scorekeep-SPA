@@ -19,7 +19,7 @@ class LocalTeamFactory extends Factory
         return [
             'name' => fake()->name,
             'logo' => fake()->url(),
-            'token' => fake()->numberBetween(10000, 99999)
+            'token' => fake()->numberBetween(10000, 99999),
         ];
     }
 }

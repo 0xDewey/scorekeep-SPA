@@ -11,8 +11,11 @@ class BaseModel extends Model
     use HasFactory;
 
     public $timestamps = true;
+
     protected $primaryKey = 'uuid';
+
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected static function boot()

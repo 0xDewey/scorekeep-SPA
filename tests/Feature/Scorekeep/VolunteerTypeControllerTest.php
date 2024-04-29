@@ -2,7 +2,6 @@
 
 use App\Models\VolunteerType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class VolunteerTypeControllerTest extends TestCase
@@ -15,11 +14,11 @@ class VolunteerTypeControllerTest extends TestCase
 
         $response = $this->withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
-        ])->getJson('/api/volunteer-types/show/' . $volunteerType->id);
+        ])->getJson('/api/volunteer-types/show/'.$volunteerType->id);
 
         $response->assertStatus(200)
             ->assertJson([
-                'label' => $volunteerType->label
+                'label' => $volunteerType->label,
             ]);
     }
 
@@ -41,7 +40,7 @@ class VolunteerTypeControllerTest extends TestCase
                 [
                     'uuid' => $volunteerType2->uuid,
                     'label' => $volunteerType2->label,
-                ]
+                ],
             ]);
     }
 
@@ -51,7 +50,7 @@ class VolunteerTypeControllerTest extends TestCase
 
         $response = $this->withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
-        ])->getJson('/api/volunteer-types/show/' . $nonExistingVolunteerTypeId);
+        ])->getJson('/api/volunteer-types/show/'.$nonExistingVolunteerTypeId);
 
         $response->assertStatus(404)
             ->assertJson(['message' => 'Catégorie de bénévole non trouvée']);

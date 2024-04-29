@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property bool isDeleted
  * @property date deletedDate
  */
-
 class Game extends BaseModel
 {
     use HasFactory;
