@@ -29,6 +29,8 @@ export default function UpdateProfileInformation({
         patch(route("profile.update"));
     };
 
+    console.log(errors);
+
     return (
         <section className={className}>
             <header>
