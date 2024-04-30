@@ -22,10 +22,10 @@ class MatchEditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => 'after_or_equal:today',
-            'address' => 'string|max:30',
-            'CPO' => 'numeric|digits:5',
-            'city' => 'string|max:30',
+            'date' => 'required|after_or_equal:today',
+            'address' => 'nullable|string|max:30',
+            'CPO' => 'nullable|numeric|digits:5',
+            'city' => 'nullable|string|max:30',
         ];
     }
 }

@@ -23,9 +23,9 @@ class AddMatchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'address' => 'required|string',
-            'CPO' => 'required|numeric|digits:5',
-            'city' => 'required|string',
+            'address' => 'nullable|string',
+            'CPO' => 'nullable|numeric|digits:5',
+            'city' => 'nullable|string',
             'category' => 'required|string',
             'visitorTeamName' => 'required|string',
             'isHomeMatch' => 'required|boolean',
