@@ -17,7 +17,7 @@ class VisitorTeamFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake("fr_FR")->city(),
+            'name' => fake('fr_FR')->city(),
         ];
     }
 }

@@ -3,13 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Game;
-use App\Models\LocalTeam;
-use App\Models\VisitorTeam;
 use App\Models\VolunteerType;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,35 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        $localTeam = LocalTeam::factory()->create([
-            'name' => "Avon Handball",
-            'logo' => "https://avonhandball.fr/wp-content/uploads/2020/08/avon-handball-1.png",
-            'token' => 77210
-        ]);
-
         $role = Role::create(['name' => 'user']);
-
-        $user = \App\Models\User::factory()->create([
-            'localTeamId' => $localTeam->uuid,
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => 'password',
-        ]);
-
-        $user->assignRole($role);
-
         $role = Role::create(['name' => 'admin']);
-
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Test Admin',
-            'email' => 'admin@example.com',
-            'password' => 'password',
-        ]);
-
-        $user->assignRole($role);
-
         $role = Role::create(['name' => 'SA']);
 
         $user = \App\Models\User::factory()->create([
@@ -57,38 +26,9 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole($role);
 
-        $visitorTeams = VisitorTeam::factory(5)->create();
-
-        Game::factory(2)->create([
-            'localTeamId' => $localTeam->uuid,
-            'visitorTeamId' => $visitorTeams[0]->uuid,
-        ]);
-
-        Game::factory(2)->create([
-            'localTeamId' => $localTeam->uuid,
-            'visitorTeamId' => $visitorTeams[1]->uuid,
-        ]);
-
-        Game::factory(2)->create([
-            'localTeamId' => $localTeam->uuid,
-            'visitorTeamId' => $visitorTeams[2]->uuid,
-        ]);
-
-        Game::factory(2)->create([
-            'localTeamId' => $localTeam->uuid,
-            'visitorTeamId' => $visitorTeams[3]->uuid,
-        ]);
-
-        Game::factory(2)->create([
-            'localTeamId' => $localTeam->uuid,
-            'visitorTeamId' => $visitorTeams[4]->uuid,
-        ]);
-
-        // Volunteer::factory(15)->create();
-
-        VolunteerType::factory()->create(['label' => "Secrétaire"]);
-        VolunteerType::factory()->create(['label' => "Chronométreur"]);
-        VolunteerType::factory()->create(['label' => "Responsable de salle"]);
-        VolunteerType::factory()->create(['label' => "Buvette"]);
+        VolunteerType::factory()->create(['label' => 'Secrétaire']);
+        VolunteerType::factory()->create(['label' => 'Chronométreur']);
+        VolunteerType::factory()->create(['label' => 'Responsable de salle']);
+        VolunteerType::factory()->create(['label' => 'Buvette']);
     }
 }

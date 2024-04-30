@@ -2,19 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Game;
-use Inertia\Inertia;
-use App\Models\VisitorTeam;
-use Illuminate\Http\Request;
-use App\Models\VolunteerType;
-use App\Http\Resources\GameResource;
 use App\Http\Requests\AddMatchRequest;
 use App\Http\Requests\MatchEditRequest;
 use App\Http\Requests\RegistrateVoluteersRequest;
+use App\Http\Resources\GameResource;
+use App\Models\Game;
+use App\Models\User;
+use App\Models\VisitorTeam;
+use App\Models\VolunteerType;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
+    public function index(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+
+        $roles = [];
+
+        foreach ($user->roles()->get() as $role) {
+            $roles[] = $role->name;
+        }
+
+        return Inertia::render('Dashboard/Index', [
+            'roles' => $roles,
+        ]);
+    }
+
     public function matchsIndex(Request $request)
     {
         $startDate = $request->input('start_date', now());
@@ -56,7 +72,7 @@ class DashboardController extends Controller
             'date',
             'address',
             'CPO',
-            'city'
+            'city',
         ]);
 
         $game = Game::find($uuid);
@@ -156,7 +172,7 @@ class DashboardController extends Controller
             'drinkManager',
             'roomManager',
             'secretary',
-            'timekeeper'
+            'timekeeper',
         ]);
 
         $query->where('localTeamId', auth()->user()->localTeamId);
@@ -171,7 +187,7 @@ class DashboardController extends Controller
             'matchs' => GameResource::collection($games),
             'startDate' => $startDate,
             'endDate' => $endDate->format('Y-m-d'),
-            'volunteerTypes' => $volunteerTypes
+            'volunteerTypes' => $volunteerTypes,
         ]);
     }
 

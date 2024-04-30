@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->uuid()->primary();
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('category');
             $table->dateTime('gameDate');
             $table->boolean('isCancelled')->nullable()->default(false);

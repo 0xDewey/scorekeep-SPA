@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\User;
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Notifications\SendTemporaryPassword;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -12,19 +11,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    $user = User::find(auth()->user()->id);
-
-    $roles = [];
-
-    foreach ($user->roles()->get() as $role) {
-        $roles[] = $role->name;
-    }
-
-    return Inertia::render('Dashboard/Index', [
-        'roles' => $roles,
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,5 +19,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-require __DIR__ . '/scorekeep.php';
+require __DIR__.'/auth.php';
+require __DIR__.'/scorekeep.php';

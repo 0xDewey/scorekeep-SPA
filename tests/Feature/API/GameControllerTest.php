@@ -26,14 +26,14 @@ class GameControllerTest extends TestCase
     {
         VisitorTeam::factory()->create();
         $uuid = fake()->uuid;
-        Game::factory(['visitorTeamId' => $uuid, 'gameDate' => Carbon::tomorrow("Europe/Paris")->toDateTimeString()]);
-        Game::factory(['visitorTeamId' =>fake()->uuid, 'gameDate' => Carbon::tomorrow("Europe/Paris")->toDateTimeString()])->count(2)->create();
-        $today = Carbon::now("Europe/Paris")->format("Y-m-d");
+        Game::factory(['visitorTeamId' => $uuid, 'gameDate' => Carbon::tomorrow('Europe/Paris')->toDateTimeString()]);
+        Game::factory(['visitorTeamId' => fake()->uuid, 'gameDate' => Carbon::tomorrow('Europe/Paris')->toDateTimeString()])->count(2)->create();
+        $today = Carbon::now('Europe/Paris')->format('Y-m-d');
 
         $parameters = [
             'local_team_id' => $uuid,
             'start_date' => $today,
-            'end_date' => Carbon::now()->addWeek()->format("Y-m-d"),
+            'end_date' => Carbon::now()->addWeek()->format('Y-m-d'),
         ];
 
         $response = $this->
@@ -55,7 +55,7 @@ class GameControllerTest extends TestCase
     {
         VisitorTeam::factory()->create();
 
-        Game::factory(['visitorTeamId' => fake()->uuid, 'gameDate' => Carbon::tomorrow("Europe/Paris")->toDateTimeString()])->count(3)->create();
+        Game::factory(['visitorTeamId' => fake()->uuid, 'gameDate' => Carbon::tomorrow('Europe/Paris')->toDateTimeString()])->count(3)->create();
         $parameters = [
             'local_team_id' => 1,
         ];
@@ -68,7 +68,6 @@ class GameControllerTest extends TestCase
         $response->assertOk();
         $response->assertJsonCount(3);
     }
-
 
     /**
      * Test store method.
@@ -86,8 +85,8 @@ class GameControllerTest extends TestCase
 
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -95,8 +94,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         $response = $this->
@@ -135,7 +134,7 @@ class GameControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         VisitorTeam::factory()->create();
-        $game = Game::factory()->create(["visitorTeamId" => fake()->uuid]);
+        $game = Game::factory()->create(['visitorTeamId' => fake()->uuid]);
 
         $response = $this->
         withHeaders([
@@ -146,9 +145,9 @@ class GameControllerTest extends TestCase
         $response->assertOk();
         $response->assertJson(
             [
-                "uuid" => $game->uuid,
-                "address" => $game->address,
-                "category" => $game->category,
+                'uuid' => $game->uuid,
+                'address' => $game->address,
+                'category' => $game->category,
             ]
         );
     }
@@ -186,8 +185,8 @@ class GameControllerTest extends TestCase
 
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -195,20 +194,20 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
-        $game = Game::factory()->create(["visitorTeamId" => fake()->uuid]);
+        $game = Game::factory()->create(['visitorTeamId' => fake()->uuid]);
         $date = Carbon::now()->addDay()->toDateTimeString();
-        $address = "14 rue du temple 75000 Paris";
+        $address = '14 rue du temple 75000 Paris';
         $response = $this->
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->
         putJson(route('api.games.update', ['gameId' => $game->uuid]), [
             'gameDate' => $date,
-            'address' => $address
+            'address' => $address,
         ]);
 
         $response->assertOk();
@@ -217,7 +216,7 @@ class GameControllerTest extends TestCase
         $this->assertDatabaseHas('games', [
             'uuid' => $game->uuid,
             'address' => $address,
-            'gameDate' => $date
+            'gameDate' => $date,
         ]);
     }
 
@@ -232,8 +231,8 @@ class GameControllerTest extends TestCase
 
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -241,8 +240,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         $response = $this->
@@ -271,8 +270,8 @@ class GameControllerTest extends TestCase
 
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -280,11 +279,11 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
-        $game = Game::factory()->create(["visitorTeamId" => fake()->uuid]);
+        $game = Game::factory()->create(['visitorTeamId' => fake()->uuid]);
 
         $volunteerTypes = VolunteerType::factory(4)->create();
         $vol1 = Volunteer::factory()->create(['volunteerTypeId' => $volunteerTypes[0]->uuid]);
@@ -326,8 +325,8 @@ class GameControllerTest extends TestCase
 
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -335,8 +334,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         VolunteerType::factory()->create();
@@ -371,12 +370,12 @@ class GameControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $visitorTeam = VisitorTeam::factory()->create();
-        $game = Game::factory()->create(["visitorTeamId" => $visitorTeam->uuid]);
+        $game = Game::factory()->create(['visitorTeamId' => $visitorTeam->uuid]);
 
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -384,8 +383,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         $response = $this->
@@ -411,8 +410,8 @@ class GameControllerTest extends TestCase
     {
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -420,8 +419,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         $game = Game::factory()->create();
@@ -444,8 +443,8 @@ class GameControllerTest extends TestCase
     {
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -453,8 +452,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         $game = Game::factory()->create(['isCancelled' => true]);
@@ -481,8 +480,8 @@ class GameControllerTest extends TestCase
     {
         $user = User::factory()->create(
             [
-                "email" => "email@mail.com",
-                "password" => "password"
+                'email' => 'email@mail.com',
+                'password' => 'password',
             ]
         );
 
@@ -490,8 +489,8 @@ class GameControllerTest extends TestCase
         withHeaders([
             'Scorekeep-API-Key' => env('API_PUBLIC_KEY'),
         ])->postJson(route('login'), [
-            'email' => "email@mail.com",
-            'password' => "password",
+            'email' => 'email@mail.com',
+            'password' => 'password',
         ]);
 
         $game = Game::factory()->create(['isCancelled' => false]);

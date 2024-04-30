@@ -2,14 +2,14 @@
 
 namespace Tests\Feature\API;
 
-use Mockery;
-use Tests\TestCase;
 use App\Models\Game;
 use App\Models\LocalTeam;
-use App\Models\Volunteer;
 use App\Models\VisitorTeam;
+use App\Models\Volunteer;
 use App\Models\VolunteerType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Mockery;
+use Tests\TestCase;
 
 class VolunteerControllerTest extends TestCase
 {
@@ -19,10 +19,10 @@ class VolunteerControllerTest extends TestCase
     {
         $visitorTeam = VisitorTeam::factory()->create();
         $volunteerTypeId = VolunteerType::factory()->create();
-        $localTeam = LocalTeam::factory()->create(['token'=>1234]);
+        $localTeam = LocalTeam::factory()->create(['token' => 1234]);
         $game = Game::factory()->create([
-            "visitorTeamId" => $visitorTeam->uuid,
-            "localTeamId" => $localTeam->uuid]);
+            'visitorTeamId' => $visitorTeam->uuid,
+            'localTeamId' => $localTeam->uuid]);
 
         $name = 'John Doe';
         $token = 1234;
@@ -37,18 +37,17 @@ class VolunteerControllerTest extends TestCase
             'name' => $name,
             'token' => $token,
             'gameId' => $gameId,
-            'volunteerTypeId' => $volunteerTypeId
+            'volunteerTypeId' => $volunteerTypeId,
         ]);
 
         $response->assertStatus(201)
-        ->assertJson(['message' => 'Bénévole enregistré avec succès']);
+            ->assertJson(['message' => 'Bénévole enregistré avec succès']);
 
         $this->assertDatabaseHas('volunteers', [
             'gameId' => $gameId,
-            'volunteerTypeId' => $volunteerTypeId
+            'volunteerTypeId' => $volunteerTypeId,
         ]);
     }
-
 
     public function testStoreWithInvalidData()
     {
@@ -83,11 +82,10 @@ class VolunteerControllerTest extends TestCase
             'name' => $name,
             'token' => $token,
             'gameId' => $gameId,
-            'volunteerTypeId' => $volunteerTypeId
+            'volunteerTypeId' => $volunteerTypeId,
         ]);
 
         $response->assertStatus(404)
             ->assertJson(['message' => 'Erreur lors de l\'enregistrement du bénévole']);
     }
-
 }

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
-use App\Models\LocalTeam;
-use App\Models\Volunteer;
-use Illuminate\Http\Request;
-use App\Exceptions\TokenMismatch;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ValidateVolunteerRegistrationRequest;
+use App\Models\Game;
+use App\Models\Volunteer;
+use Illuminate\Support\Facades\Redirect;
 
 class VolunteerController extends Controller
 {

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use Carbon\Carbon;
-use App\Models\Game;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\GameResource;
+use App\Models\Game;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Http\Controllers\API\VisitorTeamController;
 
 class GameController extends Controller
 {
@@ -86,14 +85,14 @@ class GameController extends Controller
         if ($localTeamId) {
             $query->where('localTeamId', $localTeamId);
         }
-        $startDate = Carbon::now("Europe/Paris")->format('Y-m-d');
-        $endDate = Carbon::now("Europe/Paris")->addWeek()->format('Y-m-d');
+        $startDate = Carbon::now('Europe/Paris')->format('Y-m-d');
+        $endDate = Carbon::now('Europe/Paris')->addWeek()->format('Y-m-d');
 
         $query->whereBetween('gameDate', [$startDate, $endDate]);
 
         $query->where('isDeleted', false);
 
-        $games = $query->orderBy("gameDate")->paginate($perPage);
+        $games = $query->orderBy('gameDate')->paginate($perPage);
 
         return GameResource::collection($games);
     }
@@ -109,11 +108,10 @@ class GameController extends Controller
             'category' => 'required|string',
             'visitorTeamName' => 'required|string',
             'isHomeMatch' => 'required|boolean',
-            'gameDate' =>
-            [
+            'gameDate' => [
                 'required',
                 'date',
-                'after:' . Carbon::now('Europe/Paris')->toDateTimeString(),
+                'after:'.Carbon::now('Europe/Paris')->toDateTimeString(),
             ],
         ]);
 
@@ -130,7 +128,6 @@ class GameController extends Controller
 
         $game->save();
 
-
         return response()->json(['message' => 'Match enregistré avec succès', 'data' => $game->gameDate], 201);
     }
 
@@ -140,7 +137,7 @@ class GameController extends Controller
     public function show(string $gameId)
     {
         try {
-            $game = Game::query()->where("uuid", $gameId)->first();
+            $game = Game::query()->where('uuid', $gameId)->first();
 
             if ($game === null) {
                 throw new ModelNotFoundException();
@@ -150,7 +147,7 @@ class GameController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Match non trouvé',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }
@@ -161,7 +158,7 @@ class GameController extends Controller
     public function update(Request $request, string $gameId)
     {
         try {
-            $game = Game::query()->where("uuid", $gameId)->first();
+            $game = Game::query()->where('uuid', $gameId)->first();
 
             if ($game === null) {
                 throw new ModelNotFoundException();
@@ -169,11 +166,10 @@ class GameController extends Controller
 
             $validatedData = $request->validate([
                 'address' => 'nullable|string',
-                'gameDate' =>
-                [
+                'gameDate' => [
                     'required',
                     'date',
-                    'after:' . Carbon::now('Europe/Paris')->toDateTimeString(),
+                    'after:'.Carbon::now('Europe/Paris')->toDateTimeString(),
                 ],
             ]);
 
@@ -190,7 +186,7 @@ class GameController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Match non trouvé',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }
@@ -201,7 +197,7 @@ class GameController extends Controller
     public function addVolunteers(Request $request, string $gameId)
     {
         try {
-            $game = Game::query()->where("uuid", $gameId)->first();
+            $game = Game::query()->where('uuid', $gameId)->first();
 
             if ($game === null) {
                 throw new ModelNotFoundException();
@@ -222,12 +218,12 @@ class GameController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Match non trouvé',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Paramètre de requête fournis incorrects ou inexistants',
-                'exception' => $e->getMessage()
+                'exception' => $e->getMessage(),
             ], 404);
         }
     }
@@ -244,7 +240,7 @@ class GameController extends Controller
 
             $gameId = $validatedData['gameId'];
 
-            $game = Game::query()->where("uuid", $gameId)->first();
+            $game = Game::query()->where('uuid', $gameId)->first();
 
             $game->isCancelled = false;
             $game->cancelledDate = null;
@@ -271,7 +267,7 @@ class GameController extends Controller
 
             $gameId = $validatedData['gameId'];
 
-            $game = Game::query()->where("uuid", $gameId)->first();
+            $game = Game::query()->where('uuid', $gameId)->first();
 
             $game->isDeleted = true;
             $game->deletedDate = Carbon::now();
@@ -298,7 +294,7 @@ class GameController extends Controller
 
             $gameId = $validatedData['gameId'];
 
-            $game = Game::query()->where("uuid", $gameId)->first();
+            $game = Game::query()->where('uuid', $gameId)->first();
 
             $game->isCancelled = true;
             $game->cancelledDate = Carbon::now();
