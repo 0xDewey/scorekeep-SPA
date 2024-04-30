@@ -26,17 +26,13 @@ export default function UpdateProfileInformation({
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route("profile.update"), {
-            onError: (errors) => {
-                console.log(errors);
-            },
-        });
+        post(route("profile.update"));
     };
 
     return (
         <section className={className}>
             <header>
-                <h2 className="">Information de profil  dsdd</h2>
+                <h2 className="">Information de profil</h2>
 
                 <p className="">
                     Mettez à jour les informations de profil et l'adresse
