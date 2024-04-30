@@ -17,7 +17,7 @@ export default function UpdateProfileInformation({
 }) {
     const user = usePage<PageProps>().props.auth.user;
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } =
+    const { data, setData, post, errors, processing, recentlySuccessful } =
         useForm({
             name: user.name,
             email: user.email,
@@ -26,7 +26,7 @@ export default function UpdateProfileInformation({
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        patch(route("profile.update"), {
+        post(route("profile.update"), {
             onError: (errors) => {
                 console.log(errors);
             },
@@ -36,7 +36,7 @@ export default function UpdateProfileInformation({
     return (
         <section className={className}>
             <header>
-                <h2 className="">Information de profil</h2>
+                <h2 className="">Information de profil  dsdd</h2>
 
                 <p className="">
                     Mettez à jour les informations de profil et l'adresse
