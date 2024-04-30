@@ -26,10 +26,12 @@ export default function UpdateProfileInformation({
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        patch(route("profile.update"));
+        patch(route("profile.update"), {
+            onError: (errors) => {
+                console.log(errors);
+            },
+        });
     };
-
-    console.log(errors);
 
     return (
         <section className={className}>
