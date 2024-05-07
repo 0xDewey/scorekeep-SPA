@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
- * @property integer ffhUid
+ * @property int ffhUid
  * @property string address
  * @property string visitorTeamId
  * @property string timekeeperId

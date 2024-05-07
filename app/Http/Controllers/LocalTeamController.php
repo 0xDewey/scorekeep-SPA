@@ -76,7 +76,6 @@ class LocalTeamController extends Controller
 
     /**
      * Update the localteam password in storage.
-     *
      */
     public function passwordUpdate(Request $request)
     {

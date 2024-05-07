@@ -31,7 +31,7 @@ class DashboardController extends Controller
 
         return Inertia::render('Dashboard/Index', [
             'roles' => $roles,
-            'password' => $password
+            'password' => $password,
         ]);
     }
 
