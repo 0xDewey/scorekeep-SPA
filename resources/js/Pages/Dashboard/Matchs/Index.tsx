@@ -24,10 +24,11 @@ export default function DashboardMatchs({
     startDate,
     matchs,
 }: PageProps<{
-    endDate: string;
-    startDate: string;
+    endDate: any;
+    startDate: any;
     matchs: MatchResponse;
 }>) {
+    console.log(matchs);
     const [initialStartDate, setStartDate] = useState(
         moment(startDate, "YYYY-MM-DD")
     );
@@ -36,7 +37,7 @@ export default function DashboardMatchs({
     );
 
     const handleFilter = () => {
-        router.replace(
+        router.get(
             route("dashboard.matchs.index", {
                 end_date: initialEndDate.format("YYYY-MM-DD"),
                 start_date: initialStartDate.format("YYYY-MM-DD"),
@@ -139,7 +140,7 @@ export default function DashboardMatchs({
                                                         <Link
                                                             href={`/dashboard/matchs/cancel/${match.uuid}`}
                                                             about={
-                                                                "Annuler le match contre" +
+                                                                "Annuler le match contre " +
                                                                 match
                                                                     .visitorTeam
                                                                     .name
@@ -164,7 +165,7 @@ export default function DashboardMatchs({
                                                         <Link
                                                             href={`/dashboard/matchs/${match.uuid}`}
                                                             about={
-                                                                "Supprimer le match contre" +
+                                                                "Supprimer le match contre " +
                                                                 match
                                                                     .visitorTeam
                                                                     .name
@@ -191,7 +192,7 @@ export default function DashboardMatchs({
                                                     <Link
                                                         href={`/dashboard/matchs/confirm/${match.uuid}`}
                                                         about={
-                                                            "Reconfirmer le match contre" +
+                                                            "Reconfirmer le match contre " +
                                                             match.visitorTeam
                                                                 .name
                                                         }
