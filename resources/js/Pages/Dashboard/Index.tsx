@@ -10,7 +10,7 @@ import {
     faUsers,
     faVolleyball,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import UpdateRegistrationPasswordModal from "@/Components/Organisms/UpdateRegistrationPasswordModal";
 
 interface DashboardLinks {
     innerText: string;
@@ -18,7 +18,13 @@ interface DashboardLinks {
     icon: React.ReactNode;
 }
 
-const Dashboard = ({ auth, roles }: PageProps<{ roles: Array<string> }>) => {
+const Dashboard = ({
+    auth,
+    roles,
+    password,
+}: PageProps<{ roles: Array<string>; password: string }>) => {
+    const isSA = roles.includes("SA");
+
     let dashboardLinks: Array<DashboardLinks> = [
         {
             innerText: "Profil",
@@ -37,7 +43,7 @@ const Dashboard = ({ auth, roles }: PageProps<{ roles: Array<string> }>) => {
         },
     ];
 
-    if (roles.includes("SA")) {
+    if (isSA) {
         dashboardLinks = [
             {
                 innerText: "Profil",
@@ -78,6 +84,11 @@ const Dashboard = ({ auth, roles }: PageProps<{ roles: Array<string> }>) => {
                                 </div>
                             </DashboardLink>
                         ))}
+                        {!isSA && (
+                            <UpdateRegistrationPasswordModal
+                                password={password}
+                            />
+                        )}
                     </div>
                 </section>
             </Layout>

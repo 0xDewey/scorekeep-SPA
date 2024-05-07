@@ -16,6 +16,7 @@ import {
     faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/Components/Atoms/Button";
+import ICSUploadButton from "@/Components/Organisms/ICSUploadButton";
 
 export default function DashboardMatchs({
     auth,
@@ -88,6 +89,7 @@ export default function DashboardMatchs({
                                     Ajouter un match
                                 </Button>
                             </Link>
+                            <ICSUploadButton />
                         </div>
                         <table>
                             <thead>

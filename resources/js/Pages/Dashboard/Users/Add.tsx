@@ -18,22 +18,14 @@ export default function AddMatch({
     roles: Array<SelectOptionsProps>;
     localTeams: Array<SelectOptionsProps>;
 }>) {
-    console.log(localTeams);
-    const {
-        data,
-        setData,
-        errors,
-        post,
-        processing,
-        recentlySuccessful,
-        reset,
-    } = useForm({
-        name: "",
-        local_team: "",
-        role: "",
-        password: "",
-        email: "",
-    });
+    const { data, setData, errors, post, processing, recentlySuccessful } =
+        useForm({
+            name: "",
+            local_team: "",
+            role: "",
+            password: "",
+            email: "",
+        });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

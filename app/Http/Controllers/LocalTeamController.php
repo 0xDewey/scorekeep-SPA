@@ -73,4 +73,23 @@ class LocalTeamController extends Controller
             ], 404);
         }
     }
+
+    /**
+     * Update the localteam password in storage.
+     *
+     */
+    public function passwordUpdate(Request $request)
+    {
+        $localTeam = LocalTeam::findOrFail(auth()->user()->localTeamId);
+
+        $validatedData = $request->validate([
+            'password' => 'required|string',
+        ]);
+
+        $localTeam->token = $validatedData['password'];
+
+        $localTeam->save();
+
+        return redirect(route('dashboard', absolute: false));
+    }
 }

@@ -19,6 +19,7 @@ export default function AddMatch({ auth }: PageProps<{}>) {
         reset,
     } = useForm({
         name: "",
+        ffhName: "",
         logo: "",
         token: "",
     });
@@ -45,6 +46,15 @@ export default function AddMatch({ auth }: PageProps<{}>) {
                             value={data.name}
                         />
                         <InputError className="" message={errors.name} />
+                        <Input
+                            onChange={(e) => {
+                                setData("ffhName", e.target.value);
+                            }}
+                            type={"text"}
+                            field={"Nom chez la FFH"}
+                            value={data.ffhName}
+                        />
+                        <InputError className="" message={errors.ffhName} />
                         <Input
                             onChange={(e) => {
                                 setData("logo", e.target.value);

@@ -22,6 +22,7 @@ class CreateLocalTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'ffhName' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'logo' => 'required|url',
             'token' => 'required|string',
