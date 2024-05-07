@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         $localTeam = LocalTeam::find(auth()->user()->localTeamId);
 
-        $password = $localTeam ? $localTeam->token : "";
+        $password = $localTeam ? $localTeam->token : '';
 
         return Inertia::render('Dashboard/Index', [
             'roles' => $roles,
