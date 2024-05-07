@@ -28,10 +28,14 @@ export default function DashboardMatchs({
     startDate: string;
     matchs: MatchResponse;
 }>) {
-    const [initialStartDate, setStartDate] = useState(moment(startDate));
-    const [initialEndDate, setEndDate] = useState(moment(endDate));
+    const [initialStartDate, setStartDate] = useState(
+        moment(startDate, "YYYY-MM-DD")
+    );
+    const [initialEndDate, setEndDate] = useState(
+        moment(endDate, "YYYY-MM-DD")
+    );
 
-    useEffect(() => {
+    const handleFilter = () => {
         router.replace(
             route("dashboard.matchs.index", {
                 end_date: initialEndDate.format("YYYY-MM-DD"),
@@ -39,7 +43,7 @@ export default function DashboardMatchs({
                 page: matchs.meta.current_page,
             })
         );
-    }, [initialStartDate, initialEndDate]);
+    };
 
     return (
         <>
@@ -48,20 +52,17 @@ export default function DashboardMatchs({
                 <article className="dashboard-matchs">
                     <h1>Matchs Dashboard</h1>
                     <section className="filter-section">
-                        <div className={"date-filters"}>
+                        <div className={"date-filters my-7"}>
                             <div className="date-filter">
                                 <label htmlFor="startDate">
                                     Date de début:
                                 </label>
                                 <DatePicker
-                                    selected={moment(
-                                        startDate,
-                                        "YYYY-MM-DD"
-                                    ).toDate()}
+                                    selected={initialStartDate.toDate()}
                                     onChange={(date) =>
                                         setStartDate(moment(date))
                                     }
-                                    maxDate={moment(endDate).toDate()}
+                                    maxDate={initialEndDate.toDate()}
                                     dateFormat="yyyy-MM-dd"
                                     locale={"fr"}
                                 />
@@ -69,16 +70,22 @@ export default function DashboardMatchs({
                             <div className="date-filter">
                                 <label htmlFor="endDate">Date de fin:</label>
                                 <DatePicker
-                                    selected={moment(
-                                        endDate,
-                                        "YYYY-MM-DD"
-                                    ).toDate()}
+                                    selected={initialEndDate.toDate()}
                                     onChange={(date) =>
                                         setEndDate(moment(date))
                                     }
+                                    minDate={initialStartDate.toDate()}
                                     dateFormat="yyyy-MM-dd"
                                     locale={"fr"}
                                 />
+                            </div>
+                            <div className="flex justify-end w-full">
+                                <Button
+                                    className="valid"
+                                    onClick={handleFilter}
+                                >
+                                    Filtrer
+                                </Button>
                             </div>
                         </div>
                     </section>

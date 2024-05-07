@@ -52,7 +52,10 @@ class DashboardController extends Controller
         $query->where('isDeleted', false);
         $query->with('visitorTeam');
 
-        $games = $query->orderBy('gameDate')->paginate($perPage);
+        $games = $query->orderBy('gameDate')->paginate($perPage)->appends([
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ]);
 
         return Inertia::render('Dashboard/Matchs/Index', [
             'matchs' => GameResource::collection($games),
