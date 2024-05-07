@@ -53,6 +53,11 @@ class Game extends BaseModel
      */
     protected $casts = [
         'gameDate' => 'datetime',
+        'cancelledDate' => 'datetime',
+        'deletedDate' => 'datetime',
+        'isDeleted' => 'boolean',
+        'isCancelled' => 'boolean',
+        'isHomeMatch' => 'boolean',
     ];
 
     /**
