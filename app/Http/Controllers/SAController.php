@@ -65,6 +65,7 @@ class SAController extends Controller
     public function createLocalTeam(CreateLocalTeamRequest $request)
     {
         $LocalTeam = LocalTeam::create([
+            'ffhName' => $request->ffhName,
             'name' => $request->name,
             'logo' => $request->logo,
             'password' => Hash::make($request->password),

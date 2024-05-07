@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
+ * @property int ffhUid
  * @property string address
  * @property string visitorTeamId
  * @property string timekeeperId
@@ -29,6 +30,9 @@ class Game extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'ffhUid',
+        'gameDate',
+        'category',
         'address',
         'visitorTeamId',
         'timekeeperId',

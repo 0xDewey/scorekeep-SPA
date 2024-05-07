@@ -7,6 +7,7 @@ use App\Http\Requests\MatchEditRequest;
 use App\Http\Requests\RegistrateVoluteersRequest;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
+use App\Models\LocalTeam;
 use App\Models\User;
 use App\Models\VisitorTeam;
 use App\Models\VolunteerType;
@@ -20,6 +21,8 @@ class DashboardController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
+        $password = LocalTeam::find(auth()->user()->localTeamId)->token;
+
         $roles = [];
 
         foreach ($user->roles()->get() as $role) {
@@ -28,6 +31,7 @@ class DashboardController extends Controller
 
         return Inertia::render('Dashboard/Index', [
             'roles' => $roles,
+            'password' => $password,
         ]);
     }
 
