@@ -17,7 +17,7 @@ export default function UpdateMatch({
 }: PageProps<{
     match: Match;
 }>) {
-    const { data, setData, errors, patch, processing, recentlySuccessful } =
+    const { data, setData, errors, put, processing, recentlySuccessful } =
         useForm({
             date: match.gameDate,
             address: match.address,
@@ -28,7 +28,7 @@ export default function UpdateMatch({
     const handleSubmit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        patch(
+        put(
             route("dashboard.match.edit", {
                 uuid: match.uuid,
             })

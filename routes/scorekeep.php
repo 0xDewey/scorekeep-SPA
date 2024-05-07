@@ -18,9 +18,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/matchs/add', [DashboardController::class, 'addMatch'])->name('dashboard.match.add');
     Route::post('/dashboard/matchs/add', [DashboardController::class, 'storeMatch'])->name('dashboard.match.store');
     Route::get('/dashboard/matchs/{uuid}', [DashboardController::class, 'matchShow'])->name('dashboard.match.show');
-    Route::patch('/dashboard/matchs/{uuid}', [DashboardController::class, 'matchEdit'])->name('dashboard.match.edit');
-    Route::patch('/dashboard/matchs/cancel/{uuid}', [DashboardController::class, 'matchCancel'])->name('dashboard.match.cancel');
-    Route::patch('/dashboard/matchs/confirm/{uuid}', [DashboardController::class, 'matchConfirm'])->name('dashboard.match.confirm');
+    Route::put('/dashboard/matchs/{uuid}', [DashboardController::class, 'matchEdit'])->name('dashboard.match.edit');
+    Route::put('/dashboard/matchs/cancel/{uuid}', [DashboardController::class, 'matchCancel'])->name('dashboard.match.cancel');
+    Route::put('/dashboard/matchs/confirm/{uuid}', [DashboardController::class, 'matchConfirm'])->name('dashboard.match.confirm');
     Route::delete('/dashboard/matchs/{uuid}', [DashboardController::class, 'matchDelete'])->name('dashboard.match.delete');
 
     Route::get('/dashboard/volunteers', [DashboardController::class, 'volunteers'])->name('dashboard.volunteers');

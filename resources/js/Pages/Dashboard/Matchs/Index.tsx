@@ -137,7 +137,7 @@ export default function DashboardMatchs({
                                                                     .visitorTeam
                                                                     .name
                                                             }
-                                                            method="patch"
+                                                            method="put"
                                                             as="div"
                                                             preserveScroll={
                                                                 true
@@ -188,7 +188,7 @@ export default function DashboardMatchs({
                                                             match.visitorTeam
                                                                 .name
                                                         }
-                                                        method="patch"
+                                                        method="put"
                                                         as="div"
                                                         preserveScroll={true}
                                                     >
