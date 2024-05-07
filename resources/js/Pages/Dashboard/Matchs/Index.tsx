@@ -28,7 +28,6 @@ export default function DashboardMatchs({
     startDate: any;
     matchs: MatchResponse;
 }>) {
-    console.log(matchs);
     const [initialStartDate, setStartDate] = useState(
         moment(startDate, "YYYY-MM-DD")
     );
