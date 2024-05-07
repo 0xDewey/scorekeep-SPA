@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         $localTeam = LocalTeam::find(auth()->user()->localTeamId);
 
-        $password = $localTeam ? $localTeam->token : "";
+        $password = $localTeam ? $localTeam->token : '';
 
         return Inertia::render('Dashboard/Index', [
             'roles' => $roles,
@@ -54,7 +54,7 @@ class DashboardController extends Controller
 
         $games = $query->orderBy('gameDate')->paginate($perPage)->appends([
             'start_date' => $startDate,
-            'end_date' => $endDate
+            'end_date' => $endDate,
         ]);
 
         return Inertia::render('Dashboard/Matchs/Index', [
