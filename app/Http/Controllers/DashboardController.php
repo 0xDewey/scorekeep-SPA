@@ -21,13 +21,15 @@ class DashboardController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        $password = LocalTeam::find(auth()->user()->localTeamId)->token;
-
         $roles = [];
 
         foreach ($user->roles()->get() as $role) {
             $roles[] = $role->name;
         }
+
+        $localTeam = LocalTeam::find(auth()->user()->localTeamId);
+
+        $password = $localTeam ? $localTeam->token : "";
 
         return Inertia::render('Dashboard/Index', [
             'roles' => $roles,
