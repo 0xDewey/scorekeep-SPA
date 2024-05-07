@@ -16,7 +16,7 @@ return new class extends Migration
         });
 
         Schema::table('local_teams', function (Blueprint $table) {
-            $table->bigInteger('ffhName')->nullable()->unique();
+            $table->string('ffhName')->nullable();
         });
     }
 
@@ -25,6 +25,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('games', function (Blueprint $table) {
+            $table->dropColumn('ffhUid');
+        });
+
+        Schema::table('local_teams', function (Blueprint $table) {
+            $table->dropColumn('ffhName');
+        });
     }
 };
