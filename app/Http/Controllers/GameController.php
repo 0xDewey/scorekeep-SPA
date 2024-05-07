@@ -75,7 +75,7 @@ class GameController extends Controller
     private function processIcs($path)
     {
         try {
-            $ical = new ICal(storage_path('app/' . $path), [
+            $ical = new ICal(storage_path('app/'.$path), [
                 'defaultSpan' => 2,
                 'defaultTimeZone' => 'UTC',
                 'defaultWeekStart' => 'MO',
@@ -126,7 +126,7 @@ class GameController extends Controller
 
     private static function extractVisitorTeamName($str, $localTeamName): string
     {
-        $vsPosition = strpos($str, " vs ");
+        $vsPosition = strpos($str, ' vs ');
 
         if (strpos($str, $localTeamName) === 0) {
             return trim(substr($str, $vsPosition + 4));
@@ -145,8 +145,8 @@ class GameController extends Controller
         foreach ($content as $address) {
             if (preg_match('/(\d{5}|\d[A-B]\d{3})/', $address, $matches)) {
                 $streetName = trim(explode($matches[0], $address)[0]);
-                $final .= $streetName . '/';
-                $final .= $matches[0] . '/';
+                $final .= $streetName.'/';
+                $final .= $matches[0].'/';
             }
         }
 
