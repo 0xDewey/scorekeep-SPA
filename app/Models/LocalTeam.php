@@ -17,6 +17,7 @@ class LocalTeam extends BaseModel
     protected $fillable = [
         'uuid',
         'name',
+        'ffhName',
         'logo',
         'token',
     ];

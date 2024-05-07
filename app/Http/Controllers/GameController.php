@@ -75,7 +75,7 @@ class GameController extends Controller
     private function processIcs($path)
     {
         try {
-            $ical = new ICal(storage_path('app/'.$path), [
+            $ical = new ICal(storage_path('app/' . $path), [
                 'defaultSpan' => 2,
                 'defaultTimeZone' => 'UTC',
                 'defaultWeekStart' => 'MO',
@@ -84,13 +84,11 @@ class GameController extends Controller
             ]);
 
             foreach ($ical->events() as $event) {
-                $address = $this->addressFormat($event->location);
+                $address = self::addressFormat($event->location);
 
                 $localTeam = LocalTeam::find(auth()->user()->localTeamId);
 
-                $visitorTeamName = str_replace($localTeam->name, '', $event->summary);
-                $visitorTeamName = str_replace('vs', '', $visitorTeamName);
-                $visitorTeamName = trim($visitorTeamName);
+                $visitorTeamName = self::extractVisitorTeamName($event->summary, strtoupper($localTeam->ffhName));
 
                 $visitorTeam = VisitorTeam::where('name', $visitorTeamName)->firstOrCreate([
                     'name' => $visitorTeamName,
@@ -99,7 +97,7 @@ class GameController extends Controller
                 $category = explode(' - ', $event->description)[0];
                 $gameDate = Carbon::createFromTimestamp($event->dtstart_array[2]);
 
-                $isHomeMatch = Str::startsWith($event->summary, strtoupper($localTeam->name));
+                $isHomeMatch = Str::startsWith($event->summary, strtoupper($localTeam->ffhName));
 
                 Game::updateOrCreate(
                     [
@@ -126,7 +124,18 @@ class GameController extends Controller
         }
     }
 
-    private function addressFormat(string $location): string
+    private static function extractVisitorTeamName($str, $localTeamName): string
+    {
+        $vsPosition = strpos($str, " vs ");
+
+        if (strpos($str, $localTeamName) === 0) {
+            return trim(substr($str, $vsPosition + 4));
+        } else {
+            return trim(substr($str, 0, $vsPosition));
+        }
+    }
+
+    private static function addressFormat(string $location): string
     {
         $content = explode(', ', $location);
         array_shift($content);
@@ -136,8 +145,8 @@ class GameController extends Controller
         foreach ($content as $address) {
             if (preg_match('/(\d{5}|\d[A-B]\d{3})/', $address, $matches)) {
                 $streetName = trim(explode($matches[0], $address)[0]);
-                $final .= $streetName.'/';
-                $final .= $matches[0].'/';
+                $final .= $streetName . '/';
+                $final .= $matches[0] . '/';
             }
         }
 
