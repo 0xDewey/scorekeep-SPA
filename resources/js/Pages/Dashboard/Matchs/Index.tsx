@@ -50,7 +50,7 @@ export default function DashboardMatchs({
             <Head title="Dashboard - Les matchs" />
             <Layout user={auth.user}>
                 <article className="dashboard-matchs">
-                    <h1 className="text-xl>Matchs Dashboard</h1>
+                    <h1 className="text-xl">Matchs Dashboard</h1>
                     <section className="filter-section">
                         <div className={"date-filters my-7"}>
                             <div className="date-filter">
