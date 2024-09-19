@@ -1,6 +1,6 @@
 import moment from "moment";
 import { Match } from "@/interfaces/Match";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Head, Link, router } from "@inertiajs/react";
@@ -38,8 +38,8 @@ export default function DashboardMatchs({
     const handleFilter = () => {
         router.get(
             route("dashboard.matchs.index", {
-                end_date: initialEndDate.format("YYYY-MM-DD"),
                 start_date: initialStartDate.format("YYYY-MM-DD"),
+                end_date: initialEndDate.format("YYYY-MM-DD"),
                 page: matchs.meta.current_page,
             })
         );
@@ -50,7 +50,7 @@ export default function DashboardMatchs({
             <Head title="Dashboard - Les matchs" />
             <Layout user={auth.user}>
                 <article className="dashboard-matchs">
-                    <h1>Matchs Dashboard</h1>
+                    <h1 className="text-xl>Matchs Dashboard</h1>
                     <section className="filter-section">
                         <div className={"date-filters my-7"}>
                             <div className="date-filter">

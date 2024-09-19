@@ -1,6 +1,7 @@
 import { Link, Head } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import Layout from "@/Layouts/Layout";
+import HomePageCarousel from "@/Components/Organisms/HomePageCarousel";
 
 export default function Welcome({ auth }: PageProps<{}>) {
     return (
@@ -27,23 +28,27 @@ export default function Welcome({ auth }: PageProps<{}>) {
                             que de consulter la liste des membres inscrits.
                         </p>
                         <p>
-                            L’inscription aux tables de matchs est possible soit
-                            via ce site internet.
-                        </p>
-                        <p>
                             Une vérification peut-être ajoutée au moment de
                             l’inscription via l’adresse e-mail de la personne
                             souhaitant s’inscrire, afin de vérifier que cette
-                            dernière dispose d’une licence (élement nécessaire
-                            pour tenir une table). Cette vérification peut-être
-                            faite via un mot de passe transmis par l'association.
+                            dernière dispose d’une licence. Toutefois, cette
+                            vérification peut-être faite via un mot de passe
+                            transmis par l'association.
                         </p>
                         <p>
                             Au delà de la gestion des tables de marques, cette
                             application permet aux familles / parents de savoir
                             quand un match est joué.
                         </p>
+                        <p>
+                            Une fonctionnalité a été ajoutée afin d'utiliser le
+                            fichier de calendrier de match de la{" "}
+                            <a href="https://www.ffhandball.fr/">FFHB</a> afin
+                            de faciliter l'enregistrement ou la mise à jour des
+                            matchs.
+                        </p>
                     </section>
+                    <HomePageCarousel />
                     <section className={"footer-paragraph"}>
                         <p>
                             Si toutefois vous souhaitez inscrire votre

@@ -12,6 +12,7 @@ use App\Notifications\SendTemporaryPassword;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class SAController extends Controller
 {
@@ -37,16 +38,18 @@ class SAController extends Controller
 
         $localTeamId = $request->local_team ?? null;
 
+        $password = Str::random(16);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'localTeamId' => $localTeamId,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($password),
         ]);
 
         $user->assignRole($role);
 
-        $user->notify(new SendTemporaryPassword($request->password));
+        $user->notify(new SendTemporaryPassword($password));
 
         $roles = Role::all();
         $localTeams = LocalTeam::all();

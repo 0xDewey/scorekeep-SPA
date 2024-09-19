@@ -27,8 +27,7 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'local_team' => 'required_if:role,1|required_if:role,2|nullable|string|exists:local_teams,uuid',
             'role' => 'required|string|exists:roles,id',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', Password::defaults()],
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
         ];
     }
 

@@ -61,7 +61,7 @@ export default function UpdateRegistrationPasswordModal(
                         value={data.password}
                         type={"text"}
                         maxLength={30}
-                        field={"nom"}
+                        field={"Mot de passe"}
                         onChange={(e) => setData("password", e.target.value)}
                     />
                     <InputError className="" message={errors.password} />

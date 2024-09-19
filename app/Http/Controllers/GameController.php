@@ -48,7 +48,7 @@ class GameController extends Controller
     public function uploadIcs(Request $request)
     {
         $user = User::find(
-            auth()->user()->id
+            request()->user()->id
         );
 
         $request->validate(['calendar' => 'required|file|mimes:ics,txt']);
@@ -75,7 +75,7 @@ class GameController extends Controller
     private function processIcs($path)
     {
         try {
-            $ical = new ICal(storage_path('app/'.$path), [
+            $ical = new ICal(storage_path('app/' . $path), [
                 'defaultSpan' => 2,
                 'defaultTimeZone' => 'UTC',
                 'defaultWeekStart' => 'MO',
@@ -86,7 +86,7 @@ class GameController extends Controller
             foreach ($ical->events() as $event) {
                 $address = self::addressFormat($event->location);
 
-                $localTeam = LocalTeam::find(auth()->user()->localTeamId);
+                $localTeam = LocalTeam::find(request()->user()->localTeamId);
 
                 $visitorTeamName = self::extractVisitorTeamName($event->summary, strtoupper($localTeam->ffhName));
 
@@ -145,8 +145,8 @@ class GameController extends Controller
         foreach ($content as $address) {
             if (preg_match('/(\d{5}|\d[A-B]\d{3})/', $address, $matches)) {
                 $streetName = trim(explode($matches[0], $address)[0]);
-                $final .= $streetName.'/';
-                $final .= $matches[0].'/';
+                $final .= $streetName . '/';
+                $final .= $matches[0] . '/';
             }
         }
 
