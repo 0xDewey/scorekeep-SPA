@@ -22,11 +22,11 @@ class RegistrateVoluteersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'timekeeperId' => 'string|uuid',
-            'drinkManagerId' => 'string|uuid',
-            'roomManagerId' => 'string|uuid',
+            'timekeeperId' => 'string|uuid|nullable',
+            'drinkManagerId' => 'string|uuid|nullable',
+            'roomManagerId' => 'string|uuid|nullable',
             'matchId' => 'string|uuid|required',
-            'secretaryId' => 'string|uuid',
+            'secretaryId' => 'string|uuid|nullable',
         ];
     }
 }

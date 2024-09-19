@@ -41,7 +41,7 @@ export default function UpdateProfileInformation({
             </header>
 
             <form onSubmit={submit} className="">
-                <div className="max-w-sm m-auto">
+                <div className="max-w-sm">
                     <Input
                         field="nom"
                         type="text"
@@ -52,7 +52,7 @@ export default function UpdateProfileInformation({
                     <InputError className="" message={errors.name} />
                 </div>
 
-                <div className="max-w-sm m-auto">
+                <div className="max-w-sm">
                     <Input
                         field="email"
                         type="email"

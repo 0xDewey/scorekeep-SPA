@@ -62,7 +62,7 @@ export default function UpdatePasswordForm({
             </header>
 
             <form onSubmit={updatePassword} className="">
-                <div className="max-w-sm m-auto">
+                <div className="max-w-sm">
                     <Input
                         field="mot de passe actuel"
                         value={data.current_password}
@@ -78,7 +78,7 @@ export default function UpdatePasswordForm({
                     />
                 </div>
 
-                <div className="max-w-sm m-auto">
+                <div className="max-w-sm">
                     <Input
                         field="nouveau mot de passe"
                         value={data.password}
@@ -89,7 +89,7 @@ export default function UpdatePasswordForm({
                     <InputError message={errors.password} className="" />
                 </div>
 
-                <div className="max-w-sm m-auto">
+                <div className="max-w-sm">
                     <Input
                         field="confirmer le mot de passe"
                         value={data.password_confirmation}

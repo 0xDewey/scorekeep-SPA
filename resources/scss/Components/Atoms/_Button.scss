@@ -1,5 +1,4 @@
 button {
-    font-size: 17px;
     font-weight: 500;
     padding: 10px 7px;
     color: $text-color;
@@ -35,7 +34,6 @@ button {
         border: none; /* No border */
         border-radius: 5px; /* Rounded borders */
         cursor: pointer; /* Pointer cursor on hover */
-        font-size: 16px; /* Font size */
         display: flex; /* Flex container to align icon and text */
         align-items: center; /* Center items vertically */
         gap: 10px; /* Space between icon and text */

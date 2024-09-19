@@ -23,7 +23,6 @@ export default function AddMatch({
             name: "",
             local_team: "",
             role: "",
-            password: "",
             email: "",
         });
 
@@ -68,15 +67,6 @@ export default function AddMatch({
                             value={data.email}
                         />
                         <InputError className="" message={errors.email} />
-                        <Input
-                            onChange={(e) => {
-                                setData("password", e.target.value);
-                            }}
-                            type={"text"}
-                            field={"Mot de passe provisoire"}
-                            value={data.password}
-                        />
-                        <InputError className="" message={errors.password} />
                         <Select
                             value={data.role}
                             onChange={(e) => setData("role", e.target.value)}

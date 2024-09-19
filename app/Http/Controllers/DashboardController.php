@@ -19,7 +19,7 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $user = User::find(auth()->user()->id);
+        $user = User::find($request->user()->id);
 
         $roles = [];
 
@@ -27,7 +27,7 @@ class DashboardController extends Controller
             $roles[] = $role->name;
         }
 
-        $localTeam = LocalTeam::find(auth()->user()->localTeamId);
+        $localTeam = LocalTeam::find($request->user()->localTeamId);
 
         $password = $localTeam ? $localTeam->token : '';
 
@@ -40,14 +40,14 @@ class DashboardController extends Controller
     public function matchsIndex(Request $request)
     {
         $startDate = $request->input('start_date', now());
-        $endDate = Carbon::parse($request->input('end_date', now()->addDay(10)))->endOfDay();
+        $endDate = $request->input('end_date', now()->addDay(10));
 
         $perPage = $request->input('per_page', 10);
 
         $query = Game::query();
 
-        $query->where('localTeamId', auth()->user()->localTeamId);
-        $query->whereBetween('gameDate', [$startDate, $endDate]);
+        $query->where('localTeamId', $request->user()->localTeamId);
+        $query->whereBetween('gameDate', [$startDate, Carbon::parse($endDate)->endOfDay()]);
 
         $query->where('isDeleted', false);
         $query->with('visitorTeam');
@@ -60,7 +60,7 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Matchs/Index', [
             'matchs' => GameResource::collection($games),
             'startDate' => $startDate,
-            'endDate' => $endDate->format('Y-m-d'),
+            'endDate' => $endDate,
         ]);
     }
 
@@ -146,7 +146,7 @@ class DashboardController extends Controller
         $validatedData = (object) $request->validated();
 
         $game = new Game();
-        $game->localTeamId = auth()->user()->localTeamId;
+        $game->localTeamId = $request->user()->localTeamId;
         $game->address = "$validatedData->address/$validatedData->CPO/$validatedData->city";
         $game->category = $validatedData->category;
         $game->gameDate = $validatedData->gameDate;
@@ -184,7 +184,7 @@ class DashboardController extends Controller
             'timekeeper',
         ]);
 
-        $query->where('localTeamId', auth()->user()->localTeamId);
+        $query->where('localTeamId', $request->user()->localTeamId);
         $query->whereBetween('gameDate', [$startDate, $endDate]);
 
         $query->where('isDeleted', false);

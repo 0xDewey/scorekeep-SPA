@@ -25,7 +25,6 @@ header.app-header {
         font-family: Lato-Regular, serif;
         letter-spacing: 1px;
         color: $text-color;
-        font-size: calc(5px + 1vw);
         transition: color 0.3s ease-in-out;
     }
 
@@ -61,7 +60,6 @@ header.app-header {
         .app-title {
             width: 60%;
             text-align: center;
-            font-size: calc(9px + 1vw);
         }
 
         .links {

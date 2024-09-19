@@ -14,7 +14,7 @@ export default function Edit({
         <Layout user={auth.user}>
             <Head title="Profil" />
 
-            <section className="profile">
+            <section className="profile lg:w-6/12 w-10/12">
                 <div className="">
                     <div className="">
                         <UpdateProfileInformationForm

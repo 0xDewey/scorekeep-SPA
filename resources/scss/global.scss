@@ -1,6 +1,11 @@
 @tailwind utilities;
 @import "variables";
-@import "./normalize.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 @font-face {
     font-family: "Lato-Regular";
@@ -48,12 +53,6 @@ div.page {
     .hidden-s {
         display: none;
     }
-    table.app-table {
-        font-size: 0.8em;
-        button {
-            font-size: 0.9em;
-        }
-    }
 }
 
 @media (max-width: $layout-breakpoint-extra-small) {
@@ -77,10 +76,6 @@ article.home-content {
 
     section {
         text-align: justify;
-    }
-
-    section.main-paragraph {
-        margin-bottom: 40px;
     }
 
     section.footer-paragraph {
