@@ -1,9 +1,4 @@
-import React, {
-    ChangeEvent,
-    FormEventHandler,
-    useEffect,
-    useState,
-} from "react";
+import { FormEventHandler, useEffect } from "react";
 import { Input } from "../Atoms/Input";
 import moment from "moment";
 import Select from "../Atoms/Select";
@@ -12,7 +7,6 @@ import { Transition } from "@headlessui/react";
 import InputError from "../InputError";
 import SelectOptionsProps from "@/Models/SelectOptionsProps";
 import Modal from "../Modal";
-import ResetPassword from "@/Pages/Auth/ResetPassword";
 
 interface RegistrationVolunteerModalProps {
     isOpen: boolean;
@@ -20,6 +14,9 @@ interface RegistrationVolunteerModalProps {
     gameDate: Date | null;
     visitorTeamName: string;
     gameCategory: string;
+    address: string;
+    CPO: string;
+    city: string;
     gameId: string;
     volunteerTypes: Array<SelectOptionsProps>;
 }
@@ -67,6 +64,10 @@ export default function RegistrationVolunteerModal(
                 <h5 className={"heading"}>
                     {props.gameCategory} contre {props.visitorTeamName}
                 </h5>
+                <p className="">
+                    {props.address}, <br />
+                    {props.city} {props.CPO}
+                </p>
                 <p>{moment(props.gameDate).format("DD/MM/YYYY HH:mm")}</p>
             </div>
             <form className={"form-submit"} onSubmit={submit}>

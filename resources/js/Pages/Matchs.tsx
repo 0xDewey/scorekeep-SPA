@@ -30,6 +30,9 @@ export default function Matchs({
                                 visitorTeamName={match.visitorTeam.name}
                                 category={match.category}
                                 gameDate={match.gameDate}
+                                address={match.address}
+                                CPO={match.CPO}
+                                city={match.city}
                                 isHomeMatch={match.isHomeMatch}
                                 gameId={match.uuid.toString()}
                                 volunteerTypes={volunteerTypes}
