@@ -12,7 +12,7 @@ export default function Header({
             className={`app-header ${scrolling ? "app-header--scrolling" : ""}`}
         >
             <div className={"app-title"}>
-                <h1 className="text-xl">Scorekeep</h1>
+                <p className="text-xl">Scorekeep</p>
             </div>
             <div className="logo-app hidden-xs">
                 <Link href="/">

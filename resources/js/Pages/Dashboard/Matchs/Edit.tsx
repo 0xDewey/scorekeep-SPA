@@ -40,10 +40,10 @@ export default function UpdateMatch({
             <Head title={match.visitorTeam.name} />
             <Layout user={auth.user}>
                 <article className={"update-match"}>
-                    <h2>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Mise à jour du match <br /> {match.category} contre{" "}
                         {match.visitorTeam?.name}
-                    </h2>
+                    </h1>
                     <form onSubmit={handleSubmit}>
                         <div className={"datepicker"}>
                             <label htmlFor={"gameDate"}>Date du match:</label>

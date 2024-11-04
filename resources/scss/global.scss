@@ -37,10 +37,7 @@ div.page {
 
     a {
         text-decoration: none;
-    }
-    a,
-    a:visited {
-        color: $text-color;
+        color: #212121;
     }
 }
 
@@ -76,14 +73,6 @@ article.home-content {
     background: $card-background;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
-
-    h2 {
-        text-align: center;
-    }
-
-    section {
-        text-align: justify;
-    }
 
     section.footer-paragraph {
         font-weight: bold;

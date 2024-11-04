@@ -51,6 +51,7 @@ export default function HomePageCarousel() {
                         {images.map((image, index) => (
                             <Slide index={index} key={index}>
                                 <Image
+                                    className="rounded-md"
                                     src={image.src}
                                     alt={image.caption}
                                     hasMasterSpinner={false}

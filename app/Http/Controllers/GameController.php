@@ -21,7 +21,7 @@ class GameController extends Controller
     public function index(Request $request, string $localTeamId)
     {
         $startDate = now();
-        $endDate = now()->addDay(10);
+        $endDate = now()->next(Carbon::SUNDAY)->addDays(2);
 
         $perPage = $request->input('per_page', 10);
 

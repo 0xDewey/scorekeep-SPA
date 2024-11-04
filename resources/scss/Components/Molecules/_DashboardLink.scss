@@ -10,6 +10,7 @@ div.dashboard-link {
     align-items: flex-end;
     box-shadow: $box-shadow;
     transition-duration: $transition-duration;
+    color: #212121;
     &:hover {
         scale: 1.2;
         cursor: pointer;

@@ -69,7 +69,9 @@ const Dashboard = ({
             <Layout user={auth.user}>
                 <section className="dashboard">
                     <div>
-                        <h2>Panneau d'administration</h2>
+                        <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                            Panneau d'administration
+                        </h1>
                     </div>
                     <div className="dashboard-links">
                         {dashboardLinks.map((obj, key) => (

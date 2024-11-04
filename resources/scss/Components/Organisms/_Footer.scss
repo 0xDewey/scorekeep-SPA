@@ -12,10 +12,10 @@ footer {
     justify-content: space-evenly;
     background: $base-blue;
 
-    .footer-link {
-        display: flex;
-        justify-content: space-evenly;
-        width: 80vw;
+    div.footer-link {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
     }
 
     .copyright {
@@ -25,8 +25,8 @@ footer {
 }
 
 @media (max-width: $layout-breakpoint-extra-small) {
-    .footer-link {
-        flex-direction: column;
-        height: 50%;
+    footer {
+        div.footer-link {
+        }
     }
 }
