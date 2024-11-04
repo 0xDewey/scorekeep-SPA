@@ -115,7 +115,7 @@ class GameController extends Controller
             ],
         ]);
 
-        $game = new Game();
+        $game = new Game;
         $game->localTeamId = $validatedData['localTeamId'];
         $game->address = $validatedData['address'];
         $game->category = $validatedData['category'];
@@ -140,7 +140,7 @@ class GameController extends Controller
             $game = Game::query()->where('uuid', $gameId)->first();
 
             if ($game === null) {
-                throw new ModelNotFoundException();
+                throw new ModelNotFoundException;
             }
 
             return response()->json(new GameResource($game));
@@ -161,7 +161,7 @@ class GameController extends Controller
             $game = Game::query()->where('uuid', $gameId)->first();
 
             if ($game === null) {
-                throw new ModelNotFoundException();
+                throw new ModelNotFoundException;
             }
 
             $validatedData = $request->validate([
@@ -200,7 +200,7 @@ class GameController extends Controller
             $game = Game::query()->where('uuid', $gameId)->first();
 
             if ($game === null) {
-                throw new ModelNotFoundException();
+                throw new ModelNotFoundException;
             }
 
             $validatedData = $request->validate([

@@ -16,7 +16,7 @@ class VolunteerController extends Controller
     {
         $validatedData = (object) $request->only(['name', 'gameId', 'volunteerTypeId']);
 
-        $volunteer = new Volunteer();
+        $volunteer = new Volunteer;
 
         $volunteer->name = $validatedData->name;
         //            $volunteer->email = $validatedData->email;

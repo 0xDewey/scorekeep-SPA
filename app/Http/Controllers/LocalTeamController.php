@@ -33,7 +33,7 @@ class LocalTeamController extends Controller
         ]);
 
         try {
-            $localTeam = new LocalTeam();
+            $localTeam = new LocalTeam;
             $localTeam->name = $validatedData['name'];
 
             $localTeam->save();

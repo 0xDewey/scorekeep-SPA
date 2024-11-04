@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
 class CreateUserRequest extends FormRequest
 {
@@ -27,7 +26,7 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'local_team' => 'required_if:role,1|required_if:role,2|nullable|string|exists:local_teams,uuid',
             'role' => 'required|string|exists:roles,id',
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
         ];
     }
 
