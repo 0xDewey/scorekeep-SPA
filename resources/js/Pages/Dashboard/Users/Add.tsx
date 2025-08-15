@@ -36,7 +36,7 @@ export default function AddMatch({
         <>
             <Head title="Ajouter un utilisateur" />
             <Layout user={auth.user}>
-                <article className="min-h-[60vh] my-5 w-11/12 mx-auto text-center bg-card rounded-custom shadow-custom">
+                <article className="min-h-[60vh] my-5 w-11/12 mx-auto text-center bg-card rounded shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Ajout d'un utilisateur
                     </h1>

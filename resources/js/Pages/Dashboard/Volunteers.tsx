@@ -22,7 +22,7 @@ export default function Volunteers({
             <Layout user={auth.user}>
                 <article
                     className={
-                        "my-6 w-11/12 mx-auto bg-card rounded-custom shadow-custom p-6"
+                        "my-6 w-11/12 mx-auto bg-card rounded shadow-custom p-6"
                     }
                 >
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
