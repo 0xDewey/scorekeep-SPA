@@ -40,11 +40,11 @@ Route::middleware('api.public_key')->group(function () {
 
     Route::get('/local-teams', [LocalTeamController::class, 'index'])->name('api.local_teams.index');
 
-    //Route::post('/local-teams/store', [LocalTeamController::class, 'store'])->name('api.local_teams.store');
+    // Route::post('/local-teams/store', [LocalTeamController::class, 'store'])->name('api.local_teams.store');
 
     Route::get('/local-teams/{localTeamId}', [LocalTeamController::class, 'show'])->name('api.local_teams.show');
 
-    //Route::put('/local-teams/{localTeamId}', [LocalTeamController::class, 'update'])->name('api.local_teams.update');
+    // Route::put('/local-teams/{localTeamId}', [LocalTeamController::class, 'update'])->name('api.local_teams.update');
 
     Route::post('volunteers/store', [VolunteerController::class, 'store'])->name('api.volunteers.store');
 

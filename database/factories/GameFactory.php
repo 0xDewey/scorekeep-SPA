@@ -23,11 +23,11 @@ class GameFactory extends Factory
         } while (! $gameDate->isWeekend());
 
         return [
-            'address' => fake('fr_FR')->streetAddress() . '/' . fake('fr_FR')->postcode() . '/' . fake('fr_FR')->city(),
+            'address' => fake('fr_FR')->streetAddress().'/'.fake('fr_FR')->postcode().'/'.fake('fr_FR')->city(),
             'category' => fake()->randomElement($categories),
             'gameDate' => $gameDate,
             'visitorTeamId' => null,
-            'localTeamId' => null,   
+            'localTeamId' => null,
             'isHomeMatch' => fake()->boolean(),
         ];
     }
