@@ -21,7 +21,7 @@ class GameController extends Controller
     public function index(Request $request, string $localTeamId)
     {
         $startDate = now();
-        $endDate = now()->addDay(10);
+        $endDate = now()->next(Carbon::SUNDAY)->addDays(2);
 
         $perPage = $request->input('per_page', 10);
 
@@ -75,7 +75,7 @@ class GameController extends Controller
     private function processIcs($path)
     {
         try {
-            $ical = new ICal(storage_path('app/' . $path), [
+            $ical = new ICal(storage_path('app/'.$path), [
                 'defaultSpan' => 2,
                 'defaultTimeZone' => 'UTC',
                 'defaultWeekStart' => 'MO',
@@ -145,8 +145,8 @@ class GameController extends Controller
         foreach ($content as $address) {
             if (preg_match('/(\d{5}|\d[A-B]\d{3})/', $address, $matches)) {
                 $streetName = trim(explode($matches[0], $address)[0]);
-                $final .= $streetName . '/';
-                $final .= $matches[0] . '/';
+                $final .= $streetName.'/';
+                $final .= $matches[0].'/';
             }
         }
 

@@ -37,7 +37,9 @@ export default function AddMatch({
             <Head title="Ajouter un utilisateur" />
             <Layout user={auth.user}>
                 <article className={"add-user"}>
-                    <h2>Ajout d'un utilisateur</h2>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                        Ajout d'un utilisateur
+                    </h1>
                     <form onSubmit={handleSubmit}>
                         <Select
                             value={data.local_team}

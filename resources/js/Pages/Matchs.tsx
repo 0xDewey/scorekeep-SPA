@@ -22,7 +22,9 @@ export default function Matchs({
             <Head title={localTeamName + " - Les matchs "} />
             <Layout user={auth.user}>
                 <article className="matchs-content">
-                    <h2>Les matchs</h2>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                        Les matchs de cette semaine
+                    </h1>
                     <section className={"matchs-display"}>
                         {matchs.data.map((match: Match) => (
                             <MatchCard
@@ -30,6 +32,9 @@ export default function Matchs({
                                 visitorTeamName={match.visitorTeam.name}
                                 category={match.category}
                                 gameDate={match.gameDate}
+                                address={match.address}
+                                CPO={match.CPO}
+                                city={match.city}
                                 isHomeMatch={match.isHomeMatch}
                                 gameId={match.uuid.toString()}
                                 volunteerTypes={volunteerTypes}

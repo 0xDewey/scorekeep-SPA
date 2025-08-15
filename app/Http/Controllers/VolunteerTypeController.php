@@ -2,6 +2,4 @@
 
 namespace App\Http\Controllers;
 
-class VolunteerTypeController extends Controller
-{
-}
+class VolunteerTypeController extends Controller {}

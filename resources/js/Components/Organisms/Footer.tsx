@@ -7,7 +7,8 @@ interface FooterLinkProps {
 
 export default function Footer() {
     const footerLinks: Array<FooterLinkProps> = [
-        // { link: "/cgu", innerText: "Conditions générales d'utilisations" },
+        { link: "/privacy-policy", innerText: "Politique de confidentialité" },
+        { link: "/cgu", innerText: "Conditions générales d'utilisations" },
     ];
 
     return (

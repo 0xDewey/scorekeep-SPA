@@ -1,7 +1,7 @@
 div.match-card {
     background: #eee;
-    height: 110px;
     width: 250px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -11,9 +11,6 @@ div.match-card {
 
     &.clickable {
         background: rgba(2, 64, 183, 0.2);
-    }
-
-    &:hover {
         cursor: pointer;
     }
 

@@ -21,7 +21,9 @@ export default function Volunteers({
             <Head title="Dashboard - Les matchs" />
             <Layout user={auth.user}>
                 <article className={"volunteers"}>
-                    <h2>Bénévoles de la semaine</h2>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                        Bénévoles de la semaine
+                    </h1>
 
                     <table>
                         <thead>

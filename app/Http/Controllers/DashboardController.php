@@ -145,14 +145,14 @@ class DashboardController extends Controller
     {
         $validatedData = (object) $request->validated();
 
-        $game = new Game();
+        $game = new Game;
         $game->localTeamId = $request->user()->localTeamId;
         $game->address = "$validatedData->address/$validatedData->CPO/$validatedData->city";
         $game->category = $validatedData->category;
         $game->gameDate = $validatedData->gameDate;
         $game->isHomeMatch = $validatedData->isHomeMatch;
 
-        $visitorTeam = new VisitorTeam();
+        $visitorTeam = new VisitorTeam;
         $visitorTeam->name = $validatedData->visitorTeamName;
 
         $visitorTeam->save();

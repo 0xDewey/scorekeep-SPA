@@ -17,7 +17,7 @@ class VolunteerController extends Controller
     public function insert(string $name, string $email, string $volunteerTypeId)
     {
         try {
-            $volunteer = new Volunteer();
+            $volunteer = new Volunteer;
             $volunteer->name = $name;
             $volunteer->email = $email;
             $volunteer->volunteerTypeId = $volunteerTypeId;
@@ -40,10 +40,10 @@ class VolunteerController extends Controller
             $token = LocalTeam::findOrFail($game->localTeamId)->token;
 
             if ($validatedData['token'] != $token) {
-                throw new TokenMismatch();
+                throw new TokenMismatch;
             }
 
-            $volunteer = new Volunteer();
+            $volunteer = new Volunteer;
 
             $volunteer->name = $validatedData['name'];
             //            $volunteer->email = $validatedData['email'];

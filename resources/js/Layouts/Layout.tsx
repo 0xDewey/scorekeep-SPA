@@ -10,9 +10,7 @@ export default function Layout({
     header,
     children,
 }: PropsWithChildren<{ user: User; header?: ReactNode }>) {
-
     const [scrolling, setScrolling] = useState(false);
-
 
     useEffect(() => {
         const handleScroll = () => {
@@ -23,13 +21,13 @@ export default function Layout({
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-    
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toogleMenu = () => {
@@ -45,13 +43,18 @@ export default function Layout({
         navlinks.push({ innerText: "Se connecter", link: "/login" });
     } else {
         navlinks.push({ innerText: "Dashboard", link: "/dashboard" });
-        navlinks.push({ innerText: "Se déconnecter", link: "/logout"});
+        navlinks.push({ innerText: "Se déconnecter", link: "/logout" });
     }
-    
+
     return (
         <div className="page">
             <div id="slide">
-                <BurgerMenu isOpen={menuOpen} scrolling={scrolling} navlinks={navlinks} toggleMenu={toogleMenu}/>
+                <BurgerMenu
+                    isOpen={menuOpen}
+                    scrolling={scrolling}
+                    navlinks={navlinks}
+                    toggleMenu={toogleMenu}
+                />
             </div>
             <Header user={user} scrolling={scrolling} />
             <main className="content">{children}</main>

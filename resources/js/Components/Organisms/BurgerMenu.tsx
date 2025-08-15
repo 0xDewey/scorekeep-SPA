@@ -22,7 +22,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
             <div
                 className={`burger-icon  ${
                     scrolling ? "burger-icon--scrolling" : ""
-                } text-2xl`}
+                } text-3xl`}
                 onClick={toggleMenu}
             >
                 <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
@@ -32,7 +32,11 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                 <ul>
                     {navlinks.map((link, index) => (
                         <li key={index}>
-                            <Link href={link.link} onClick={toggleMenu}>
+                            <Link
+                                className="text-xl"
+                                href={link.link}
+                                onClick={toggleMenu}
+                            >
                                 {link.innerText}
                             </Link>
                         </li>

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
     CarouselProvider,
     Slider,
@@ -6,6 +5,8 @@ import {
     ButtonBack,
     ButtonNext,
     Image,
+    Dot,
+    DotGroup,
 } from "pure-react-carousel";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,70 +36,44 @@ export default function HomePageCarousel() {
         },
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [userInteracted, setUserInteracted] = useState(false);
-
-    const handlePrevClick = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? images.length - 1 : prevIndex - 1
-        );
-        setUserInteracted(true);
-    };
-
-    const handleNextClick = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-        setUserInteracted(true);
-    };
-
     return (
-        <section className="carousel-container mt-8">
+        <section className="carousel-container my-4">
             <div className="relative w-full max-w-4xl mx-auto">
                 <CarouselProvider
-                    interval={5000}
                     naturalSlideWidth={100}
                     naturalSlideHeight={50}
                     totalSlides={images.length}
-                    currentSlide={currentIndex}
-                    infinite={true}
-                    isPlaying={!userInteracted}
+                    isPlaying={true}
+                    dragEnabled
+                    infinite
                 >
                     <Slider>
                         {images.map((image, index) => (
                             <Slide index={index} key={index}>
                                 <Image
+                                    className="rounded-md"
                                     src={image.src}
                                     alt={image.caption}
                                     hasMasterSpinner={false}
                                 />
+                                <div className="text-center mt-4">
+                                    <p className="text-lg text-gray-700">
+                                        {image.caption}
+                                    </p>
+                                </div>
                             </Slide>
                         ))}
                     </Slider>
-                    <ButtonBack
-                        className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer bg-transparent border-none"
-                        onClick={handlePrevClick}
-                    >
-                        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full">
+                    <div className="flex items-center justify-between">
+                        <ButtonBack className="bg-transparent border-none">
                             <FontAwesomeIcon icon={faArrowLeft} />
-                            <span className="sr-only">Précédent</span>
-                        </span>
-                    </ButtonBack>
-                    <ButtonNext
-                        className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer bg-transparent border-none"
-                        onClick={handleNextClick}
-                    >
-                        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full">
+                        </ButtonBack>
+                        <DotGroup className="bg-none border-none" />
+                        <ButtonNext className="bg-transparent border-none">
                             <FontAwesomeIcon icon={faArrowRight} />
-                            <span className="sr-only">Suivant</span>
-                        </span>
-                    </ButtonNext>
+                        </ButtonNext>
+                    </div>
                 </CarouselProvider>
-                <div className="text-center mt-4">
-                    <p className="text-lg text-gray-700">
-                        {images[currentIndex].caption}
-                    </p>
-                </div>
             </div>
         </section>
     );

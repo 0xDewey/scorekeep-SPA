@@ -13,7 +13,9 @@ export default function Teams({
             <Head title="Les équipes" />
             <Layout user={auth.user}>
                 <article className="teams-content">
-                    <h2>Les équipes</h2>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                        Les équipes
+                    </h1>
                     <section className={"teams-display"}>
                         {teams.map((localTeam: LocalTeam) => (
                             <TeamCard

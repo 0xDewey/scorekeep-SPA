@@ -2,7 +2,7 @@ section.profile {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    background: #efefef;
+    background: darken($color: $card-background, $amount: 2);
     border-radius: 15px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
 
@@ -13,20 +13,5 @@ section.profile {
     div.buttons {
         margin-top: 10px;
         text-align: end;
-    }
-}
-div#headlessui-portal-root div.modal {
-    background: #efefef;
-
-    form {
-        padding: 0 20px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        div.buttons {
-            margin-top: 10px;
-            text-align: end;
-        }
     }
 }

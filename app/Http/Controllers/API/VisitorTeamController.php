@@ -15,7 +15,7 @@ class VisitorTeamController extends Controller
      */
     public function store(string $visitorTeamName)
     {
-        $visitorTeam = new VisitorTeam();
+        $visitorTeam = new VisitorTeam;
         $visitorTeam->name = $visitorTeamName;
 
         $visitorTeam->save();

@@ -10,9 +10,9 @@ use App\Models\LocalTeam;
 use App\Models\User;
 use App\Notifications\SendTemporaryPassword;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Str;
 
 class SAController extends Controller
 {

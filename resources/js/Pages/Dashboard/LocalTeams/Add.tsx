@@ -35,7 +35,9 @@ export default function AddMatch({ auth }: PageProps<{}>) {
             <Head title="Ajouter une équipe" />
             <Layout user={auth.user}>
                 <article className={"add-user"}>
-                    <h2>Ajout d'une équipe</h2>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                        Ajout d'une équipe
+                    </h1>
                     <form onSubmit={handleSubmit}>
                         <Input
                             onChange={(e) => {
