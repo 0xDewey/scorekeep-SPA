@@ -18,7 +18,11 @@ export const Navlink = (props: NavlinkProps) => {
         <Link
             href={props.link}
             about={`Lien de navigation pour : ${props.innerText.toLowerCase()}`}
-            className={`navlink text-md ${className}`}
+            className={`text-md px-3 py-2 rounded-md transition-colors duration-200 ${
+                props.isActive
+                    ? "text-primary bg-primary/10"
+                    : "text-text hover:text-primary"
+            }`}
         >
             {props.innerText}
         </Link>

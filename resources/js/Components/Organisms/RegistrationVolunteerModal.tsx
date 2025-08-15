@@ -60,17 +60,24 @@ export default function RegistrationVolunteerModal(
 
     return (
         <Modal show={props.isOpen} onClose={handleClose}>
-            <div className={"modal-header"}>
-                <h5 className={"heading"}>
+            <div className={"bg-white p-3 rounded-t-[16px] text-center"}>
+                <h5 className={"m-0 p-2 text-text font-medium"}>
                     {props.gameCategory} contre {props.visitorTeamName}
                 </h5>
-                <p className="">
+                <p className={"m-0 text-sm text-gray-600"}>
                     {props.address}, <br />
                     {props.city} {props.CPO}
                 </p>
-                <p>{moment(props.gameDate).format("DD/MM/YYYY HH:mm")}</p>
+                <p className={"text-sm text-gray-500"}>
+                    {moment(props.gameDate).format("DD/MM/YYYY HH:mm")}
+                </p>
             </div>
-            <form className={"form-submit"} onSubmit={submit}>
+            <form
+                className={
+                    "m-4 h-full flex flex-col justify-between items-center"
+                }
+                onSubmit={submit}
+            >
                 <Select
                     innerText="Sélectionnez le poste"
                     value={data.volunteerTypeId}
@@ -104,17 +111,21 @@ export default function RegistrationVolunteerModal(
                 >
                     <p className="">Inscription faite.</p>
                 </Transition>
-                <div className={"modal-actions"}>
-                    <div className={"actions-container"}>
+                <div className={"flex justify-around mt-3 w-full"}>
+                    <div className={"flex justify-around w-full"}>
                         <button
-                            className={"cancel-btn"}
+                            className={
+                                "px-4 py-2 rounded border border-solid bg-button-error text-white hover:bg-white hover:text-text"
+                            }
                             type="button"
                             onClick={handleClose}
                         >
                             Annuler
                         </button>
                         <button
-                            className={"confirm-btn"}
+                            className={
+                                "px-4 py-2 rounded bg-primary text-white"
+                            }
                             onClick={submit}
                             type={"submit"}
                             disabled={processing}

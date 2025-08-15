@@ -48,7 +48,7 @@ export default function AddMatch({ auth }: PageProps<{}>) {
         <>
             <Head title="Ajouter un match" />
             <Layout user={auth.user}>
-                <article className={"add-match"}>
+                <article className="min-h-[60vh] my-5 w-11/12 mx-auto text-center bg-card rounded-custom shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Ajout d'un match
                     </h1>
@@ -65,7 +65,7 @@ export default function AddMatch({ auth }: PageProps<{}>) {
                                 textOne={"A domicile"}
                                 textTwo={"A l'extérieur"}
                             />
-                            <div className={"datepicker"}>
+                            <div className={"flex flex-col w-4/5 mx-auto my-2"}>
                                 <label htmlFor={"gameDate"}>
                                     Date du match:
                                 </label>
@@ -170,7 +170,11 @@ export default function AddMatch({ auth }: PageProps<{}>) {
                             <InputError className="" message={errors.city} />
                         </fieldset>
 
-                        <div className={"btn-form space-y-4"}>
+                        <div
+                            className={
+                                "flex flex-col w-4/5 mx-auto space-y-4 my-4"
+                            }
+                        >
                             <Transition
                                 show={recentlySuccessful}
                                 enter="leave"

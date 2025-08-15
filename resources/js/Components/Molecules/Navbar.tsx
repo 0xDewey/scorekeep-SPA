@@ -18,7 +18,7 @@ export default function Navbar({ user }: PropsWithChildren<{ user: User }>) {
 
     return (
         <nav data-testid={"navbar"}>
-            <ul className={"link-list"}>
+            <ul className={"flex items-center gap-3 list-none p-0 m-0"}>
                 {navlinks.map((obj, key) => (
                     <li key={key}>
                         <Navlink

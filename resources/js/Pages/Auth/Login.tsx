@@ -43,24 +43,26 @@ export default function Login({
         <Layout user={auth.user}>
             <Head title="Se connecter" />
 
-            <div className={"connexion-form"}>
-                <form action="" onSubmit={submit}>
-                    <h3>Se connecter</h3>
+            <div className="max-w-md mx-auto mt-8 p-6 bg-card rounded-2xl shadow-custom">
+                <form onSubmit={submit} className="space-y-6">
+                    <h3 className="text-xl font-bold text-text text-center mb-6">
+                        Se connecter
+                    </h3>
                     <Input
                         field={"email"}
                         value={data.email}
                         type={"email"}
                         onChange={(e) => setData("email", e.target.value)}
+                        error={errors.email}
                     />
-                    <InputError message={errors.email} className="mt-2" />
                     <Input
                         field={"mot de passe"}
                         value={data.password}
                         type={"password"}
                         onChange={(e) => setData("password", e.target.value)}
+                        error={errors.password}
                     />
-                    <InputError message={errors.password} className="mt-2" />
-                    <label className="">
+                    <label className="flex items-center space-x-2">
                         <Checkbox
                             name="remember"
                             checked={data.remember}
@@ -68,17 +70,20 @@ export default function Login({
                                 setData("remember", e.target.checked)
                             }
                         />
-                        <span className="">Se souvenir de moi</span>
+                        <span className="text-text">Se souvenir de moi</span>
                     </label>
-                    <div className={"buttons"}>
+                    <div className="flex justify-between items-center space-x-4">
                         {canResetPassword && (
-                            <Link href={route("password.request")} className="">
+                            <Link
+                                href={route("password.request")}
+                                className="text-primary hover:underline text-sm"
+                            >
                                 Mot de passe oublié
                             </Link>
                         )}
                         <Button
-                            className="valid"
-                            type={"submit"}
+                            variant="valid"
+                            type="submit"
                             disabled={processing}
                         >
                             Valider

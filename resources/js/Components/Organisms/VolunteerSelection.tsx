@@ -2,6 +2,7 @@ import React, { FormEventHandler, useState } from "react";
 import moment from "moment";
 import { Volunteer } from "@/Models/Volunteer";
 import RadioInput from "@/Components/Atoms/RadioInput";
+import { Button } from "@/Components/Atoms/Button";
 import { router, useForm } from "@inertiajs/react";
 import { Match } from "@/Models/Match";
 import { RequestPayload } from "@inertiajs/core";
@@ -26,17 +27,21 @@ export default function VolunteerSelection({ match }: VolunteerSelectionProps) {
 
     if (!match.isHomeMatch) {
         return (
-            <tr className={"hidden-xs"}>
+            <tr className={"hidden sm:table-row"}>
                 <td>
                     <div>
-                        <p>{match.visitorTeamName}</p>
-                        <p>{match.category}</p>
-                        <p>
+                        <p className="font-medium">{match.visitorTeamName}</p>
+                        <p className="text-sm text-gray-600">
+                            {match.category}
+                        </p>
+                        <p className="text-sm text-gray-500">
                             {moment(match.gameDate).format("DD/MM/YYYY HH:mm")}
                         </p>
                     </div>
                 </td>
-                <td colSpan={4}>Match à l'extérieur</td>
+                <td colSpan={4} className="text-center">
+                    Match \u00e0 l'ext\u00e9rieur
+                </td>
                 <td></td>
             </tr>
         );
@@ -46,13 +51,15 @@ export default function VolunteerSelection({ match }: VolunteerSelectionProps) {
         <tr>
             <td>
                 <div>
-                    <p>{match.visitorTeamName}</p>
-                    <p>{match.category}</p>
-                    <p>{moment(match.gameDate).format("DD/MM/YYYY HH:mm")}</p>
+                    <p className="font-medium">{match.visitorTeamName}</p>
+                    <p className="text-sm text-gray-600">{match.category}</p>
+                    <p className="text-sm text-gray-500">
+                        {moment(match.gameDate).format("DD/MM/YYYY HH:mm")}
+                    </p>
                 </div>
             </td>
             <td>
-                <div className={"volunteers-grid-display"}>
+                <div className={"grid grid-cols-1 sm:grid-cols-2 gap-2"}>
                     {match.timekeepers.map((timekeeper: Volunteer) => (
                         <RadioInput
                             key={timekeeper.uuid}
@@ -70,7 +77,7 @@ export default function VolunteerSelection({ match }: VolunteerSelectionProps) {
             </td>
 
             <td>
-                <div className={"volunteers-grid-display"}>
+                <div className={"grid grid-cols-1 sm:grid-cols-2 gap-2"}>
                     {match.secretaries.map((secretary: Volunteer) => (
                         <RadioInput
                             key={secretary.uuid}
@@ -88,7 +95,7 @@ export default function VolunteerSelection({ match }: VolunteerSelectionProps) {
             </td>
 
             <td>
-                <div className={"volunteers-grid-display"}>
+                <div className={"grid grid-cols-1 sm:grid-cols-2 gap-2"}>
                     {match.roomManagers.map((roomManager: Volunteer) => (
                         <RadioInput
                             key={roomManager.uuid}
@@ -108,7 +115,7 @@ export default function VolunteerSelection({ match }: VolunteerSelectionProps) {
             </td>
 
             <td>
-                <div className={"volunteers-grid-display"}>
+                <div className={"grid grid-cols-1 sm:grid-cols-2 gap-2"}>
                     {match.drinkManagers.map((drinkManager: Volunteer) => (
                         <RadioInput
                             key={drinkManager.uuid}
@@ -128,9 +135,9 @@ export default function VolunteerSelection({ match }: VolunteerSelectionProps) {
             </td>
             <td>
                 <form onSubmit={submit}>
-                    <button className="valid" type="submit">
-                        Mettre à jour
-                    </button>
+                    <Button type="submit" className="valid">
+                        Mettre \u00e0 jour
+                    </Button>
                 </form>
             </td>
         </tr>

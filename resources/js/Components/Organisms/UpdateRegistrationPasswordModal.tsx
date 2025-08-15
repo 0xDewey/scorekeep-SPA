@@ -42,21 +42,26 @@ export default function UpdateRegistrationPasswordModal(
 
     return (
         <>
-            <div className="dashboard-link" onClick={toggle}>
-                <div className="flex flex-col text-center">
+            <div className="inline-block" onClick={toggle}>
+                <div className="flex flex-col text-center items-center">
                     <p className="text-2xl m-0">
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </p>
-                    <p>Modifier le mot de passe</p>
+                    <p className="text-sm">Modifier le mot de passe</p>
                 </div>
             </div>
             <Modal show={isOpen} onClose={handleClose}>
-                <div className={"modal-header"}>
-                    <h5 className={"heading"}>
-                        Mettre à jour le mot de passe d'enregistrement
+                <div className={"bg-white p-4 rounded-t-lg text-center"}>
+                    <h5 className={"m-0 p-2 text-text font-medium text-lg"}>
+                        Mettre \u00e0 jour le mot de passe d'enregistrement
                     </h5>
                 </div>
-                <form className={"form-submit"} onSubmit={submit}>
+                <form
+                    className={
+                        "m-4 h-full flex flex-col justify-between items-center space-y-4"
+                    }
+                    onSubmit={submit}
+                >
                     <Input
                         value={data.password}
                         type={"text"}
@@ -73,26 +78,30 @@ export default function UpdateRegistrationPasswordModal(
                         leave="leave"
                         leaveTo="leave-to"
                     >
-                        <p className="">Modification effectuée.</p>
+                        <p className="text-sm text-green-600">
+                            Modification effectu\u00e9e.
+                        </p>
                     </Transition>
-                    <div className={"modal-actions"}>
-                        <div className={"actions-container"}>
-                            <button
-                                className={"cancel-btn"}
-                                type="button"
-                                onClick={handleClose}
-                            >
-                                Annuler
-                            </button>
-                            <button
-                                className={"confirm-btn"}
-                                onClick={submit}
-                                type={"submit"}
-                                disabled={processing}
-                            >
-                                Modifier
-                            </button>
-                        </div>
+                    <div className={"flex justify-end mt-3 w-full space-x-3"}>
+                        <button
+                            className={
+                                "px-4 py-2 rounded border border-solid bg-red-600 text-white hover:bg-red-700"
+                            }
+                            type="button"
+                            onClick={handleClose}
+                        >
+                            Annuler
+                        </button>
+                        <button
+                            className={
+                                "px-4 py-2 rounded bg-primary text-white"
+                            }
+                            onClick={submit}
+                            type={"submit"}
+                            disabled={processing}
+                        >
+                            Modifier
+                        </button>
                     </div>
                 </form>
             </Modal>

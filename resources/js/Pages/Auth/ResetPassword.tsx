@@ -37,7 +37,11 @@ export default function ResetPassword({
         <Layout user={auth.user}>
             <Head title="Réinitialiser son mot de passe" />
 
-            <div className={"reset-password-form"}>
+            <div
+                className={
+                    "mt-24 w-min-[min(80vw,500px)] w-full max-w-md mx-auto py-5 bg-card rounded-2xl shadow-custom"
+                }
+            >
                 <form onSubmit={submit}>
                     <Input
                         type="email"
@@ -71,7 +75,7 @@ export default function ResetPassword({
                         className="mt-2"
                     />
 
-                    <div className="flex justify-end w-4/5">
+                    <div className="flex justify-end w-full">
                         <Button
                             className="valid"
                             type="submit"

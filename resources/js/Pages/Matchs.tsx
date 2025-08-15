@@ -21,11 +21,15 @@ export default function Matchs({
         <>
             <Head title={localTeamName + " - Les matchs "} />
             <Layout user={auth.user}>
-                <article className="matchs-content">
+                <article className="p-5 w-4/5 mx-auto flex flex-col bg-card rounded-2xl shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Les matchs de cette semaine
                     </h1>
-                    <section className={"matchs-display"}>
+                    <section
+                        className={
+                            "grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                        }
+                    >
                         {matchs.data.map((match: Match) => (
                             <MatchCard
                                 key={match.uuid}

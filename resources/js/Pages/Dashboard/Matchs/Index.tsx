@@ -49,13 +49,17 @@ export default function DashboardMatchs({
         <>
             <Head title="Dashboard - Les matchs" />
             <Layout user={auth.user}>
-                <article className="dashboard-matchs">
+                <article className="min-h-[60vh] my-5 w-11/12 mx-auto text-center bg-card rounded-custom shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Matchs Dashboard
                     </h1>
                     <section className="filter-section">
-                        <div className={"date-filters my-7"}>
-                            <div className="date-filter">
+                        <div
+                            className={
+                                "flex flex-col sm:flex-row sm:items-center gap-4 my-7"
+                            }
+                        >
+                            <div className={"flex flex-col w-full sm:w-1/3"}>
                                 <label htmlFor="startDate">
                                     Date de début:
                                 </label>
@@ -69,7 +73,7 @@ export default function DashboardMatchs({
                                     locale={"fr"}
                                 />
                             </div>
-                            <div className="date-filter">
+                            <div className={"flex flex-col w-full sm:w-1/3"}>
                                 <label htmlFor="endDate">Date de fin:</label>
                                 <DatePicker
                                     selected={initialEndDate.toDate()}
@@ -92,7 +96,7 @@ export default function DashboardMatchs({
                         </div>
                     </section>
                     <section className="content">
-                        <div className="add-match-button">
+                        <div className="flex items-center justify-between w-11/12 mx-auto">
                             <Link href="/dashboard/matchs/add">
                                 <Button type="button" className="valid">
                                     Ajouter un match
@@ -104,7 +108,9 @@ export default function DashboardMatchs({
                             <thead>
                                 <tr>
                                     <th>Date du match</th>
-                                    <th className={"hidden-s"}>Contre</th>
+                                    <th className={"hidden sm:table-cell"}>
+                                        Contre
+                                    </th>
                                     <th>Catégorie</th>
                                     <th>Actions</th>
                                 </tr>
@@ -117,12 +123,16 @@ export default function DashboardMatchs({
                                                 "DD/MM/YYYY HH:mm"
                                             )}
                                         </td>
-                                        <td className={"hidden-s"}>
+                                        <td className={"hidden sm:table-cell"}>
                                             {match.visitorTeam.name}
                                         </td>
                                         <td>{match.category}</td>
                                         <td>
-                                            <div className={"action-buttons"}>
+                                            <div
+                                                className={
+                                                    "flex items-center space-x-2"
+                                                }
+                                            >
                                                 {!match.isCancelled ? (
                                                     <>
                                                         <Link

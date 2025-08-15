@@ -105,7 +105,7 @@ export default function UpdatePasswordForm({
                     />
                 </div>
 
-                <div className="buttons">
+                <div className="flex justify-around space-x-4 mt-4">
                     <Button
                         type="submit"
                         className="valid"

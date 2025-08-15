@@ -20,31 +20,37 @@ export default function Volunteers({
         <>
             <Head title="Dashboard - Les matchs" />
             <Layout user={auth.user}>
-                <article className={"volunteers"}>
+                <article
+                    className={
+                        "my-6 w-11/12 mx-auto bg-card rounded-custom shadow-custom p-6"
+                    }
+                >
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Bénévoles de la semaine
                     </h1>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Chronométreurs</th>
-                                <th>Secrétaires</th>
-                                <th>Responsable de salle</th>
-                                <th>Buvette</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {matchs.data.map((match: Match) => (
-                                <VolunteerSelection
-                                    key={match.uuid}
-                                    match={match}
-                                />
-                            ))}
-                        </tbody>
-                    </table>
+                    <div className="overflow-x-auto">
+                        <table className="w-full table-auto">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Chronométreurs</th>
+                                    <th>Secrétaires</th>
+                                    <th>Responsable de salle</th>
+                                    <th>Buvette</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {matchs.data.map((match: Match) => (
+                                    <VolunteerSelection
+                                        key={match.uuid}
+                                        match={match}
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                     <Pagination links={matchs.meta.links} />
                 </article>
             </Layout>

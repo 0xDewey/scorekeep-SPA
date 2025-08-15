@@ -8,7 +8,9 @@ interface FooterLinkProps {
 export const FooterLink = (props: FooterLinkProps) => {
     return (
         <Link
-            className={"footer-link text-center"}
+            className={
+                "text-center text-sm text-text hover:text-primary transition-colors duration-200 block"
+            }
             href={props.link}
             about={`Lien vers ${props.innerText}`}
         >

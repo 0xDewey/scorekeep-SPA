@@ -73,7 +73,7 @@ const Dashboard = ({
                             Panneau d'administration
                         </h1>
                     </div>
-                    <div className="dashboard-links">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center items-stretch">
                         {dashboardLinks.map((obj, key) => (
                             <DashboardLink
                                 key={key}

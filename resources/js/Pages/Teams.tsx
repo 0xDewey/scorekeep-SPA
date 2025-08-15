@@ -12,11 +12,15 @@ export default function Teams({
         <>
             <Head title="Les équipes" />
             <Layout user={auth.user}>
-                <article className="teams-content">
+                <article className="p-5 w-4/5 mx-auto flex flex-col bg-card rounded-2xl shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Les équipes
                     </h1>
-                    <section className={"teams-display"}>
+                    <section
+                        className={
+                            "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+                        }
+                    >
                         {teams.map((localTeam: LocalTeam) => (
                             <TeamCard
                                 key={localTeam.uuid}

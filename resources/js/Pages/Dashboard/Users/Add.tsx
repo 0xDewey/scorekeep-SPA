@@ -36,7 +36,7 @@ export default function AddMatch({
         <>
             <Head title="Ajouter un utilisateur" />
             <Layout user={auth.user}>
-                <article className={"add-user"}>
+                <article className="min-h-[60vh] my-5 w-11/12 mx-auto text-center bg-card rounded-custom shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Ajout d'un utilisateur
                     </h1>
@@ -76,7 +76,11 @@ export default function AddMatch({
                             innerText="Séléctionnez le rôle"
                         />
                         <InputError className="" message={errors.role} />
-                        <div className={"btn-form space-y-4"}>
+                        <div
+                            className={
+                                "flex flex-col w-4/5 mx-auto space-y-4 my-4"
+                            }
+                        >
                             <Transition
                                 show={recentlySuccessful}
                                 enter="leave"

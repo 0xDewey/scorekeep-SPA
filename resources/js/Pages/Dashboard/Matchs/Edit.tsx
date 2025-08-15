@@ -39,13 +39,13 @@ export default function UpdateMatch({
         <>
             <Head title={match.visitorTeam.name} />
             <Layout user={auth.user}>
-                <article className={"update-match"}>
+                <article className="min-h-[60vh] my-5 w-11/12 mx-auto text-center bg-card rounded-custom shadow-custom">
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         Mise à jour du match <br /> {match.category} contre{" "}
                         {match.visitorTeam?.name}
                     </h1>
                     <form onSubmit={handleSubmit}>
-                        <div className={"datepicker"}>
+                        <div className={"flex flex-col w-4/5 mx-auto my-2"}>
                             <label htmlFor={"gameDate"}>Date du match:</label>
                             <ReactDatePicker
                                 ariaLabelledBy={"gameDate"}
@@ -101,7 +101,11 @@ export default function UpdateMatch({
                         >
                             <p className="">Mis à jour avec succès.</p>
                         </Transition>
-                        <div className={"btn-form space-y-4"}>
+                        <div
+                            className={
+                                "flex flex-col w-4/5 mx-auto space-y-4 my-4"
+                            }
+                        >
                             <Button
                                 className="valid"
                                 type="submit"
@@ -111,7 +115,11 @@ export default function UpdateMatch({
                                 Mettre à jour le match
                             </Button>
                             <Link href={"/dashboard/matchs"}>
-                                <Button type="button" className="cancel-btn">
+                                <Button
+                                    type="button"
+                                    variant={"default"}
+                                    className={"bg-gray-200 hover:bg-gray-300"}
+                                >
                                     Retour
                                 </Button>
                             </Link>

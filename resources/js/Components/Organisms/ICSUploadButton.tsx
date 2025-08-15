@@ -38,16 +38,19 @@ export default function ICSUploadButton() {
                 id="ics-file-input"
                 accept=".ics"
                 onChange={handleFile}
+                className="sr-only"
             />
+
             <label
                 htmlFor="ics-file-input"
-                className="file-label cursor-pointer"
+                className="inline-flex items-center cursor-pointer text-sm text-gray-700 hover:text-gray-900"
             >
-                <FontAwesomeIcon icon={faUpload} /> {label}
+                <FontAwesomeIcon icon={faUpload} className="me-2" /> {label}
             </label>
+
             <Button
                 type="submit"
-                className={btnClassName}
+                className={`${btnClassName} ml-2`}
                 disabled={processing}
             >
                 Télécharger

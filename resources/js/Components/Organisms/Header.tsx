@@ -9,23 +9,28 @@ export default function Header({
 }: PropsWithChildren<{ user: User; scrolling: boolean }>) {
     return (
         <header
-            className={`app-header ${scrolling ? "app-header--scrolling" : ""}`}
+            className={`w-full bg-transparent transition-shadow duration-300 ${
+                scrolling ? "backdrop-blur-sm bg-white/60 shadow-sm" : ""
+            }`}
         >
-            <div className={"app-title"}>
-                <p className="text-xl">Scorekeep</p>
-            </div>
-            <div className="logo-app hidden-xs">
-                <Link href="/">
-                    <img
-                        src={"/logo192.png"}
-                        alt={"Logo de l'application Scorekeep"}
-                        width={80}
-                        height={80}
-                    />
-                </Link>
-            </div>
-            <div className={`links ${scrolling ? "links--scrolling" : ""}`}>
-                <Navbar user={user} />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
+                <div className="flex items-center gap-4">
+                    <div className="text-xl font-bold">Scorekeep</div>
+                    <div className="hidden sm:block">
+                        <Link href="/">
+                            <img
+                                src={"/logo192.png"}
+                                alt={"Logo de l'application Scorekeep"}
+                                width={56}
+                                height={56}
+                                className="rounded"
+                            />
+                        </Link>
+                    </div>
+                </div>
+                <div className="flex-1 flex justify-end">
+                    <Navbar user={user} />
+                </div>
             </div>
         </header>
     );

@@ -86,7 +86,7 @@ export default function UpdateProfileInformation({
                     </div>
                 )}
 
-                <div className="buttons">
+                <div className="flex justify-around space-x-4 mt-4">
                     <Button
                         className="valid"
                         type="submit"

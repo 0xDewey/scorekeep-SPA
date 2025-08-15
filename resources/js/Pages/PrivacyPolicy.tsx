@@ -6,7 +6,7 @@ const PrivacyPolicy = ({ auth }: PageProps) => {
     return (
         <Layout user={auth.user}>
             <Head title="Politique de Confidentialité" />
-            <article className="home-content">
+            <article className="p-5 w-4/5 mx-auto flex flex-col bg-card rounded-2xl shadow-custom">
                 <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                     Politique de Confidentialité
                 </h1>

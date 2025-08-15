@@ -23,7 +23,11 @@ export default function ForgotPassword({ auth }: PageProps<{}>) {
         <Layout user={auth.user}>
             <Head title="Mot de passe oublié" />
 
-            <div className={"reset-password-form"}>
+            <div
+                className={
+                    "mt-24 w-full max-w-md mx-auto py-5 bg-card rounded-2xl shadow-custom"
+                }
+            >
                 <form onSubmit={submit}>
                     <h3>Réinitialisation du mot de passe</h3>
 

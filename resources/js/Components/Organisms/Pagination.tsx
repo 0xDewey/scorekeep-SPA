@@ -15,9 +15,9 @@ interface PaginationProps {
 export default function Pagination({ links }: PaginationProps) {
     function getClassName(active: boolean): string {
         if (active) {
-            return "mr-1 mb-1 px-4 py-3 leading-4 border rounded pagination-active";
+            return "mr-1 mb-1 px-4 py-2 leading-4 border rounded bg-primary text-white";
         } else {
-            return "mr-1 mb-1 px-4 py-3 leading-4 border rounded pagination";
+            return "mr-1 mb-1 px-4 py-2 leading-4 border rounded bg-white text-text hover:bg-gray-50";
         }
     }
 

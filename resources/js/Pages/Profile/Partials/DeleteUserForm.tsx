@@ -58,7 +58,7 @@ export default function DeleteUserForm({
                 </p>
             </header>
 
-            <div className="buttons">
+            <div className="flex justify-around space-x-4 mt-4">
                 <Button
                     type="button"
                     onClick={confirmUserDeletion}
@@ -69,12 +69,15 @@ export default function DeleteUserForm({
             </div>
 
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
-                <div className={"modal-header"}>
-                    <h5 className={"heading"}>
+                <div className={"bg-white p-3 rounded-t-[16px] text-center"}>
+                    <h5 className={"m-0 p-2 text-text font-medium"}>
                         Êtes-vous sûr de vouloir supprimer votre compte ?
                     </h5>
                 </div>
-                <form onSubmit={deleteUser} className="form-submit">
+                <form
+                    onSubmit={deleteUser}
+                    className="m-4 h-full flex flex-col justify-between items-center"
+                >
                     <p className="mx-6">
                         Une fois votre compte supprimé, toutes ses ressources et
                         données seront données seront définitivement supprimées.
@@ -90,7 +93,7 @@ export default function DeleteUserForm({
 
                     <InputError message={errors.password} className="" />
 
-                    <div className="buttons">
+                    <div className="flex justify-around space-x-4 mt-4">
                         <Button className="" onClick={closeModal} type="button">
                             Annuler
                         </Button>
