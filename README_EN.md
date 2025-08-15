@@ -10,7 +10,7 @@ I had also previously migrated the React code to Next for the same reason.
 
 ## Prerequisites
 
-Before starting to work on a Laravel 11 project with PHP 8.2, make sure you have installed the following elements on your system:
+Before starting to work on a Laravel 12 project with PHP 8.2, make sure you have installed the following elements on your system:
 
 1. **PHP 8.2**: Make sure you have PHP 8.2 installed on your system. You can check this by running the following command in your terminal:
 

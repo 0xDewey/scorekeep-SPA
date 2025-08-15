@@ -23,11 +23,28 @@ class GameFactory extends Factory
         } while (! $gameDate->isWeekend());
 
         return [
-            'address' => fake('fr_FR')->streetAddress().'/'.fake('fr_FR')->postcode().'/'.fake('fr_FR')->city(),
+            'address' => fake('fr_FR')->streetAddress() . '/' . fake('fr_FR')->postcode() . '/' . fake('fr_FR')->city(),
             'category' => fake()->randomElement($categories),
             'gameDate' => $gameDate,
-            'visitorTeamId' => rand(1, 15),
+            'visitorTeamId' => null,
+            'localTeamId' => null,   
             'isHomeMatch' => fake()->boolean(),
         ];
+    }
+
+    /**
+     * Indicate that the game should have valid team relationships.
+     */
+    public function withTeams(): static
+    {
+        return $this->state(function (array $attributes) {
+            $visitorTeam = \App\Models\VisitorTeam::factory()->create();
+            $localTeam = \App\Models\LocalTeam::factory()->create();
+
+            return [
+                'visitorTeamId' => $visitorTeam->uuid,
+                'localTeamId' => $localTeam->uuid,
+            ];
+        });
     }
 }
