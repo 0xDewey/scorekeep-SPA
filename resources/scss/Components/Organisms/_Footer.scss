@@ -1,0 +1,32 @@
+footer {
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: $base-blue;
+
+    div.footer-link {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+
+    .copyright {
+        color: aliceblue;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: $layout-breakpoint-extra-small) {
+    footer {
+        div.footer-link {
+        }
+    }
+}
