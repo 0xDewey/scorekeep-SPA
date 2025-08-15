@@ -1,3 +1,193 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #0240b7;
+    --color-button-hover: aliceblue;
+    --color-text: #212121;
+    --color-card: #eef2fc;
+    --color-button-disabled: #cecdcc;
+    --color-button-error: #cfd2de;
+    --color-input-error: #ab3a68;
+}
+
+@utility btn-base {
+    /* Button components */
+    @apply font-medium py-2.5 px-2 rounded transition-all duration-400 border border-solid cursor-pointer;
+}
+
+@utility btn-valid {
+    @apply btn-base bg-primary border-blue-100 text-blue-100;
+
+    &:hover {
+        @apply border-primary bg-blue-100;
+    }
+}
+
+@utility btn-option {
+    @apply btn-base bg-green-600 border-blue-100 text-blue-100;
+
+    &:hover {
+        @apply border-green-600 bg-blue-100;
+    }
+}
+
+@utility btn-upload {
+    @apply bg-green-500 text-white py-2.5 px-4 border-0 rounded cursor-pointer flex items-center gap-2.5;
+
+    &:hover {
+        @apply bg-green-600;
+    }
+}
+
+@utility btn-error {
+    @apply btn-base bg-button-error;
+
+    &:hover {
+        @apply bg-blue-100;
+    }
+}
+
+@utility btn-danger {
+    @apply btn-base bg-red-600 text-blue-100;
+
+    &:hover {
+        @apply bg-blue-100;
+    }
+}
+
+@utility btn-disabled {
+    @apply opacity-60;
+
+    &:hover {
+        @apply opacity-60 cursor-wait;
+    }
+}
+
+@utility input-base {
+    /* Input components */
+    @apply block w-full border-gray-300 rounded-md shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-blue-500/50;
+}
+
+@utility input-error {
+    @apply border-input-error focus:border-input-error focus:ring-input-error;
+}
+
+@utility main-paragraph {
+    /* Main content styles */
+    & .ffhb-link {
+        @apply text-primary font-bold;
+    }
+}
+
+@utility ffhb-link {
+    /* Main content styles */
+    .main-paragraph & {
+        @apply text-primary font-bold;
+    }
+}
+
+@utility home-content {
+    @apply p-5 w-4/5 flex flex-col bg-card rounded-2xl shadow-custom;
+
+    & .footer-paragraph {
+        @apply font-bold;
+    }
+}
+
+@utility footer-paragraph {
+    .home-content & {
+        @apply font-bold;
+    }
+}
+
+@utility carousel__dot {
+    /* Carousel styles */
+    @apply w-2 h-2 border-0 rounded-full mx-1 p-0 bg-gray-300;
+}
+
+@utility carousel__dot--selected {
+    @apply w-4 h-2 rounded-xl bg-primary transition-colors duration-400;
+}
+
+@utility modal {
+    /* Modal styles */
+    @apply m-auto bg-card z-10 rounded-2xl shadow-modal;
+}
+
+@utility form-submit {
+    @apply m-auto mt-4 h-4/5 flex flex-col justify-between items-center;
+
+    & .buttons {
+        @apply w-full mt-2.5 flex justify-around;
+    }
+}
+
+@utility buttons {
+    .form-submit & {
+        @apply w-full mt-2.5 flex justify-around;
+    }
+}
+
+@utility page-container {
+    /* Layout components */
+    @apply m-0 antialiased;
+    min-height: calc(90vh - 110px);
+
+    & a {
+        @apply no-underline;
+    }
+}
+
+@utility nav-link {
+    /* Navigation components */
+    @apply hover:text-primary transition-colors duration-300;
+}
+
+@utility card {
+    /* Card components */
+    @apply bg-card rounded shadow-custom p-4;
+}
+
+@utility team-card {
+    @apply card text-center;
+}
+
+@utility form-group {
+    /* Form components */
+    @apply mb-4;
+}
+
+@utility form-label {
+    @apply block text-sm font-medium mb-2;
+}
+
+@utility form-select {
+    @apply input-base;
+}
+
+@utility form-radio {
+    @apply mr-2;
+}
+
+@utility container-responsive {
+    /* Utility classes for responsiveness */
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+@utility shadow-custom {
+    /* Custom utilities */
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+@utility shadow-modal {
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+@utility transition-custom {
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 0.4s;
+}
+
 @layer base {
     /* Custom font faces */
     @font-face {
@@ -41,170 +231,5 @@
     div.page a {
         text-decoration: none;
         color: #212121;
-    }
-}
-
-@layer components {
-    /* Button components */
-    .btn-base {
-        @apply font-medium py-2.5 px-2 text-text rounded transition-all duration-400 border border-solid cursor-pointer;
-    }
-
-    .btn-valid {
-        @apply btn-base bg-primary border-blue-100 text-blue-100;
-    }
-
-    .btn-valid:hover {
-        @apply text-text border-primary bg-blue-100;
-    }
-
-    .btn-option {
-        @apply btn-base bg-green-600 border-blue-100 text-blue-100;
-    }
-
-    .btn-option:hover {
-        @apply text-text border-green-600 bg-blue-100;
-    }
-
-    .btn-upload {
-        @apply bg-green-500 text-white py-2.5 px-4 border-0 rounded cursor-pointer flex items-center gap-2.5;
-    }
-
-    .btn-upload:hover {
-        @apply bg-green-600;
-    }
-
-    .btn-error {
-        @apply btn-base bg-button-error;
-    }
-
-    .btn-error:hover {
-        @apply bg-blue-100;
-    }
-
-    .btn-danger {
-        @apply btn-base bg-red-600 text-blue-100;
-    }
-
-    .btn-danger:hover {
-        @apply text-text bg-blue-100;
-    }
-
-    .btn-disabled {
-        @apply opacity-60;
-    }
-
-    .btn-disabled:hover {
-        @apply opacity-60 cursor-wait;
-    }
-
-    /* Input components */
-    .input-base {
-        @apply block w-full border-gray-300 rounded-md shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50;
-    }
-
-    .input-error {
-        @apply border-input-error focus:border-input-error focus:ring-input-error;
-    }
-
-    /* Main content styles */
-    .main-paragraph .ffhb-link {
-        @apply text-primary font-bold;
-    }
-
-    .home-content {
-        @apply p-5 w-4/5 flex flex-col bg-card rounded-2xl shadow-custom;
-    }
-
-    .home-content .footer-paragraph {
-        @apply font-bold;
-    }
-
-    /* Carousel styles */
-    .carousel__dot {
-        @apply w-2 h-2 border-0 rounded-full mx-1 p-0 bg-gray-300;
-    }
-
-    .carousel__dot--selected {
-        @apply w-4 h-2 rounded-xl bg-primary transition-colors duration-400;
-    }
-
-    /* Modal styles */
-    .modal {
-        @apply m-auto bg-card z-10 rounded-2xl shadow-modal;
-    }
-
-    .form-submit {
-        @apply m-auto mt-4 h-4/5 flex flex-col justify-between items-center;
-    }
-
-    .form-submit .buttons {
-        @apply w-full mt-2.5 flex justify-around;
-    }
-
-    /* Layout components */
-    .page-container {
-        @apply m-0 font-lato-regular text-text antialiased;
-        min-height: calc(90vh - 110px);
-    }
-
-    .page-container button {
-        @apply font-lato-bold;
-    }
-
-    .page-container a {
-        @apply no-underline text-text;
-    }
-
-    /* Navigation components */
-    .nav-link {
-        @apply text-text hover:text-primary transition-colors duration-300;
-    }
-
-    /* Card components */
-    .card {
-        @apply bg-card rounded-custom shadow-custom p-4;
-    }
-
-    .team-card {
-        @apply card text-center;
-    }
-
-    /* Form components */
-    .form-group {
-        @apply mb-4;
-    }
-
-    .form-label {
-        @apply block text-sm font-medium text-text mb-2;
-    }
-
-    .form-select {
-        @apply input-base;
-    }
-
-    .form-radio {
-        @apply mr-2;
-    }
-
-    /* Utility classes for responsiveness */
-    .container-responsive {
-        @apply mx-auto px-4 sm:px-6 lg:px-8;
-    }
-}
-
-@layer utilities {
-    /* Custom utilities */
-    .shadow-custom {
-        box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
-    }
-
-    .shadow-modal {
-        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-    }
-
-    .transition-custom {
-        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-        transition-duration: 0.4s;
     }
 }

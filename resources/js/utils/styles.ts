@@ -1,10 +1,10 @@
 // Tailwind CSS utility classes for common components
 export const styles = {
     // Page layout
-    page: "m-0 font-lato-regular text-text antialiased min-h-[calc(90vh-110px)]",
+    page: "m-0 text-text antialiased min-h-[calc(90vh-110px)]",
 
     // Cards
-    card: "bg-card rounded-custom shadow-custom p-4",
+    card: "bg-card rounded shadow-custom p-4",
     homeContent: "p-5 w-4/5 flex flex-col bg-card rounded-2xl shadow-custom",
 
     // Buttons - Legacy support
@@ -22,7 +22,7 @@ export const styles = {
         container: "space-y-6",
         group: "space-y-2",
         label: "block text-sm font-medium text-text",
-        input: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-300",
+        input: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-primary focus:ring-primary focus:ring-blue-500/50 transition-all duration-300",
         inputError:
             "border-input-error focus:border-input-error focus:ring-input-error",
         errorMessage: "mt-1 text-sm text-input-error",

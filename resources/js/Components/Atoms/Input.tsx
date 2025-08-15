@@ -56,7 +56,7 @@ export function Input(props: InputProps) {
         ${
             hasError
                 ? "border-input-error focus:border-input-error focus:ring-input-error"
-                : "border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50"
+                : "border-gray-300 focus:border-primary focus:ring-primary focus:ring-blue-500/50"
         }
         ${hasValue || isFocused ? "pt-6 pb-2" : "py-3"}
     `.trim();
